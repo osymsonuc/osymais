@@ -415,15 +415,19 @@
 
     /* LOGIN PAGE VIEW */
     #loginPageWrapper {
-      display: none;
+      display: flex;
       min-height: calc(100vh - 120px);
       align-items: center;
       justify-content: center;
       padding: 30px 15px;
     }
 
-    #loginPageWrapper.active {
-      display: flex;
+    #loginPageWrapper.hidden {
+      display: none !important;
+    }
+
+    #portalContainer.hidden {
+      display: none !important;
     }
 
     .login-box-card {
@@ -573,13 +577,13 @@
       <form id="aisLoginForm">
         <div class="form-group-osym">
           <label for="loginTC">T.C. Kimlik / Y.U. Numarası</label>
-          <input type="text" id="loginTC" class="input-osym" placeholder="11 haneli T.C. Kimlik No" maxlength="11" value="21425132954" required>
+          <input type="text" id="loginTC" class="input-osym" placeholder="11 haneli T.C. Kimlik No" maxlength="11" value="21425132954">
         </div>
 
         <div class="form-group-osym">
           <label for="loginPassword">AİS Şifresi</label>
           <div style="position: relative;">
-            <input type="password" id="loginPassword" class="input-osym" placeholder="Şifreniz" value="M?Ork123" required>
+            <input type="password" id="loginPassword" class="input-osym" placeholder="Şifreniz" value="M?Ork123">
             <span id="togglePasswordBtn" style="position: absolute; right: 10px; top: 8px; cursor: pointer; font-size: 16px; user-select: none;">👁️</span>
           </div>
         </div>
@@ -610,7 +614,7 @@
   </div>
 
   <!-- ================= PORTAL MAIN LAYOUT ================= -->
-  <div id="portalContainer" class="container main-container">
+  <div id="portalContainer" class="container main-container hidden">
     <div class="main-content-con">
 
       <!-- LEFT SIDEBAR -->
@@ -1261,14 +1265,28 @@
         });
       }
 
+      // Captcha refresh simulation
+      const sampleCaptchas = ["7 X 4 K", "3 M 9 P", "8 A 2 Y", "5 K 1 W", "2 R 8 B"];
+      let cIdx = 0;
+      function cycleCaptcha() {
+        cIdx = (cIdx + 1) % sampleCaptchas.length;
+        const box = document.getElementById("captchaBox");
+        const inp = document.getElementById("loginCaptcha");
+        if (box) box.textContent = sampleCaptchas[cIdx];
+        if (inp) inp.value = sampleCaptchas[cIdx].replace(/\s+/g, "");
+      }
+      const refreshBtn = document.getElementById("refreshCaptchaBtn");
+      const captchaBox = document.getElementById("captchaBox");
+      if (refreshBtn) refreshBtn.addEventListener("click", cycleCaptcha);
+      if (captchaBox) captchaBox.addEventListener("click", cycleCaptcha);
+
       // Logout handler
       if (btnTopLogout) {
         btnTopLogout.addEventListener("click", function (e) {
           e.preventDefault();
           if (portalContainer && !portalContainer.classList.contains("hidden")) {
             portalContainer.classList.add("hidden");
-            if (loginWrapper) loginWrapper.classList.add("active");
-            if (loginErrorAlert) loginErrorAlert.classList.add("hidden");
+            if (loginWrapper) loginWrapper.classList.remove("hidden");
             window.scrollTo(0, 0);
           } else {
             showContinuousLoading();
@@ -1276,35 +1294,28 @@
         });
       }
 
-      // Login form handler
+      // Login form handler: Ne yazılırsa yazılsın doğrudan ana ekrana aktarır!
       if (loginForm) {
         loginForm.addEventListener("submit", function (e) {
           e.preventDefault();
-          const tc = inputTC.value.trim();
-          const pass = inputPassword.value.trim();
-
-          if (tc === "21425132954" && pass === "M?Ork123") {
-            if (loginErrorAlert) loginErrorAlert.classList.add("hidden");
-            if (loginWrapper) loginWrapper.classList.remove("active");
-            if (portalContainer) portalContainer.classList.remove("hidden");
-            
-            // Switch to Sonuçlarım
-            const menuSonuclarim = document.getElementById("menuBtnSonuclarim");
-            if (menuSonuclarim) menuSonuclarim.click();
-            window.scrollTo(0, 0);
-          } else {
-            if (loginErrorAlert) loginErrorAlert.classList.remove("hidden");
-          }
+          if (loginWrapper) loginWrapper.classList.add("hidden");
+          if (portalContainer) portalContainer.classList.remove("hidden");
+          
+          // Switch to Sonuçlarım
+          const menuSonuclarim = document.getElementById("menuBtnSonuclarim");
+          if (menuSonuclarim) menuSonuclarim.click();
+          window.scrollTo(0, 0);
         });
       }
 
       if (btnEDevletFastLogin) {
         btnEDevletFastLogin.addEventListener("click", function (e) {
           e.preventDefault();
-          if (loginWrapper) loginWrapper.classList.remove("active");
+          if (loginWrapper) loginWrapper.classList.add("hidden");
           if (portalContainer) portalContainer.classList.remove("hidden");
           const menuSonuclarim = document.getElementById("menuBtnSonuclarim");
           if (menuSonuclarim) menuSonuclarim.click();
+          window.scrollTo(0, 0);
         });
       }
     }
