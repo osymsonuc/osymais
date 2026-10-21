@@ -1,0 +1,1414 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html translate="no" lang="tr" class="k-webkit">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>ÖSYM Aday İşlemleri Sistemi</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link href="./ÖSYM Aday İşlemleri Sistemi_files/yui.min.css" rel="stylesheet">
+  <link href="./ÖSYM Aday İşlemleri Sistemi_files/classic-main.min.css" rel="stylesheet">
+  <link href="./ÖSYM Aday İşlemleri Sistemi_files/base.min.css" rel="stylesheet">
+  <link href="./ÖSYM Aday İşlemleri Sistemi_files/basvuru.min.css" rel="stylesheet">
+  <link href="./ÖSYM Aday İşlemleri Sistemi_files/popup.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./ÖSYM Aday İşlemleri Sistemi_files/cssAis.css">
+  <link href="./ÖSYM Aday İşlemleri Sistemi_files/tarihgorunumucss.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="./ÖSYM Aday İşlemleri Sistemi_files/osym.messagePopup.css">
+
+  <script src="./ÖSYM Aday İşlemleri Sistemi_files/jquery.min.js.indir"></script>
+  <script src="./ÖSYM Aday İşlemleri Sistemi_files/jquery-migrate.min.js.indir"></script>
+  <script src="./ÖSYM Aday İşlemleri Sistemi_files/jquery.cookie.min.js.indir"></script>
+  <script src="./ÖSYM Aday İşlemleri Sistemi_files/kendo.all.min.js.indir"></script>
+
+  <style type="text/css">
+    /* ================= MASTER ÖSYM THEME OVERRIDES ================= */
+    html, body {
+      background-color: #f29b19 !important;
+      font-family: Arial, Helvetica, 'Segoe UI', Roboto, sans-serif !important;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      color: #222;
+      width: 100%;
+    }
+
+    .container {
+      position: relative;
+      min-width: 981px;
+      max-width: 1350px;
+      margin: 0 auto;
+      font-size: 93%;
+    }
+
+    /* HEADER */
+    .header {
+      width: 100%;
+      height: 60px;
+      margin-bottom: 3px;
+      position: relative;
+      background: #000;
+      background: -webkit-linear-gradient(to bottom, #434343, #000);
+      background: linear-gradient(to bottom, #434343, #000);
+      border-bottom: 2px solid #222;
+    }
+
+    ul.menu-icon-nav {
+      position: absolute;
+      left: 12px;
+      top: 17px;
+      display: flex;
+      list-style: none;
+      gap: 18px;
+      margin: 0;
+      padding: 0;
+    }
+
+    ul.menu-icon-nav li a {
+      color: #ffffff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      font-weight: 600;
+      transition: color 0.15s ease;
+      cursor: pointer;
+    }
+
+    ul.menu-icon-nav li a:hover {
+      color: #f5a623;
+      text-decoration: none;
+    }
+
+    .appLogo {
+      position: absolute;
+      left: 50%;
+      margin-left: -230px;
+      top: 14px;
+      width: 460px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .login-view {
+      float: right;
+      line-height: 60px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-right: 15px;
+    }
+
+    .login-view img {
+      vertical-align: middle;
+      cursor: pointer;
+      transition: transform 0.1s ease;
+    }
+
+    .login-view img:hover {
+      transform: translateY(-2px);
+    }
+
+    /* MAIN LAYOUT */
+    .main-content-con {
+      display: flex;
+      min-height: calc(100vh - 120px);
+      margin-bottom: 20px;
+    }
+
+    /* SIDEBAR */
+    .menu {
+      width: 195px;
+      text-align: left;
+      padding: 18px 14px;
+      background-color: #181716 !important;
+      border: 1px solid #333;
+      border-radius: 4px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+
+    .menu .uye-bilgi {
+      color: #f5a623 !important;
+      font-size: 13.5px;
+      font-weight: bold;
+      border-bottom: 1px solid #3c3c3c;
+      padding-bottom: 9px;
+      margin-top: 2px;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    .menu h5 {
+      color: #f5a623 !important;
+      font-size: 12.5px;
+      font-weight: bold;
+      margin-top: 14px;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .menu ul.nav {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .menu ul.nav li {
+      margin-bottom: 4px;
+      position: relative;
+    }
+
+    .menu-box-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 7px 10px;
+      background-color: #1f1f1f;
+      color: #ffffff !important;
+      border: 1px solid #383838;
+      border-radius: 3px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none !important;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .menu-box-btn:hover {
+      background-color: #2b2b2b;
+      border-color: #fbc10a;
+      color: #f5a623 !important;
+    }
+
+    .menu-box-btn.active-menu {
+      background-color: #262420;
+      border-color: #fbc10a;
+      color: #f5a623 !important;
+      box-shadow: inset 0 0 6px rgba(245, 166, 35, 0.25);
+    }
+
+    /* Submenu for Başvuru Sürecindekiler */
+    .menu ul.nav li ul.dropdown-sub {
+      position: absolute;
+      left: 100%;
+      top: 0;
+      margin-left: 2px;
+      width: 250px;
+      background: #181716;
+      border: 1px solid #fbc10a;
+      border-radius: 3px;
+      list-style: none;
+      padding: 5px 0;
+      display: none;
+      z-index: 1000;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+    }
+
+    .menu ul.nav li:hover ul.dropdown-sub {
+      display: block;
+    }
+
+    .menu ul.nav li ul.dropdown-sub li a {
+      display: block;
+      padding: 6px 12px;
+      color: #fff;
+      font-size: 11.5px;
+      text-decoration: none;
+      transition: background 0.15s ease;
+      cursor: pointer;
+    }
+
+    .menu ul.nav li ul.dropdown-sub li a:hover {
+      background-color: #333;
+      color: #f5a623;
+    }
+
+    /* Profile menu bullets */
+    .menu ul.profile-nav {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .menu ul.profile-nav li {
+      margin: 4px 0;
+    }
+
+    .menu a.uye-islem {
+      display: block;
+      padding: 3px 0;
+      color: #e0e0e0;
+      font-size: 12px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: color 0.15s ease;
+    }
+
+    .menu a.uye-islem:hover {
+      color: #f5a623;
+      text-decoration: none;
+    }
+
+    .menu a.uye-islem.active-menu {
+      color: #f5a623;
+      font-weight: bold;
+    }
+
+    /* MAIN CONTENT AREA */
+    .main-content {
+      flex: 1;
+      margin-left: 15px;
+      padding: 0;
+    }
+
+    .inner-cream-card {
+      background-color: #faf5ee;
+      border: 2px solid #ffffff;
+      border-radius: 10px;
+      padding: 24px 28px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      min-height: 480px;
+    }
+
+    .panel-heading-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #222;
+      margin-top: 0;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #ecd3ad;
+      padding-bottom: 8px;
+    }
+
+    /* RESULTS TABLE */
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .results-table th {
+      border-bottom: 1.5px solid #ebd0a8;
+      padding: 10px 8px;
+      font-weight: bold;
+      color: #111;
+      text-align: left;
+    }
+
+    .results-table th.th-right {
+      text-align: right;
+    }
+
+    .results-table td {
+      padding: 11px 8px;
+      border-bottom: 1px solid #f2e2cb;
+      color: #1a1a1a;
+    }
+
+    .results-table tr:hover td {
+      background-color: rgba(255, 255, 255, 0.6);
+    }
+
+    .results-table .btn-view-result {
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .results-table .btn-view-result:hover {
+      color: #004499;
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #000;
+      background: -webkit-linear-gradient(to top, #434343, #000);
+      background: linear-gradient(to top, #434343, #000);
+      height: 44px;
+      line-height: 44px;
+      position: relative;
+      color: #ffffff;
+      font-size: 12px;
+      border-top: 2px solid #222;
+      padding: 0 15px;
+      text-align: right;
+    }
+
+    .footer img {
+      position: absolute;
+      left: 12px;
+      top: 10px;
+    }
+
+    /* LOADING SPINNER */
+    #loading {
+      background: rgba(255, 255, 255, 0.7);
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 100000;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    #loading.active {
+      display: flex;
+    }
+
+    #loadingBox {
+      background: rgba(0, 0, 0, 0.82);
+      border-radius: 8px;
+      padding: 24px 35px;
+      text-align: center;
+      box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* RESULT DOCUMENT MODAL */
+    #resultDocModal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 200000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      box-sizing: border-box;
+      backdrop-filter: blur(2px);
+    }
+
+    #resultDocModal.active {
+      display: flex;
+    }
+
+    .result-sheet {
+      background: #ffffff;
+      width: 760px;
+      max-width: 95vw;
+      max-height: 94vh;
+      overflow-y: auto;
+      padding: 35px 42px;
+      border-radius: 4px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+      position: relative;
+      font-family: Arial, Helvetica, sans-serif;
+      box-sizing: border-box;
+    }
+
+    /* LOGIN PAGE VIEW */
+    #loginPageWrapper {
+      display: none;
+      min-height: calc(100vh - 120px);
+      align-items: center;
+      justify-content: center;
+      padding: 30px 15px;
+    }
+
+    #loginPageWrapper.active {
+      display: flex;
+    }
+
+    .login-box-card {
+      background-color: #faf5ee;
+      border: 2px solid #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.18);
+      width: 100%;
+      max-width: 460px;
+      padding: 32px 36px;
+      box-sizing: border-box;
+    }
+
+    .login-tabs {
+      display: flex;
+      background: #ece4d5;
+      border-radius: 4px;
+      padding: 3px;
+      margin-bottom: 22px;
+    }
+
+    .login-tab-btn {
+      flex: 1;
+      padding: 8px 10px;
+      border: none;
+      background: transparent;
+      font-size: 12.5px;
+      font-weight: bold;
+      color: #555;
+      cursor: pointer;
+      border-radius: 3px;
+      text-align: center;
+    }
+
+    .login-tab-btn.active {
+      background: #ffffff;
+      color: #111;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .form-group-osym {
+      margin-bottom: 16px;
+    }
+
+    .form-group-osym label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 6px;
+    }
+
+    .input-osym {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1px solid #c5c5c5;
+      border-radius: 4px;
+      font-size: 13.5px;
+      box-sizing: border-box;
+      outline: none;
+      transition: border 0.15s ease;
+    }
+
+    .input-osym:focus {
+      border-color: #f29b19;
+      box-shadow: 0 0 5px rgba(242, 155, 25, 0.4);
+    }
+
+    .btn-osym-submit {
+      width: 100%;
+      background: #f29b19;
+      background: linear-gradient(to bottom, #ffb03b, #e08807);
+      color: #ffffff;
+      border: 1px solid #d47e04;
+      padding: 11px;
+      border-radius: 5px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+      transition: all 0.15s ease;
+    }
+
+    .btn-osym-submit:hover {
+      background: linear-gradient(to bottom, #ffa726, #d47e04);
+      transform: translateY(-1px);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ================= HEADER ================= -->
+  <div class="header">
+    <ul class="menu-icon-nav">
+      <li>
+        <a id="navHomeLink" class="menu-anasayfa">
+          <img src="Content/Images/icon-anasayfa.png" alt="" width="20" height="20">
+          Ana Sayfa
+        </a>
+      </li>
+      <li>
+        <a id="navCalendarLink" class="menu-sinavtakvimi">
+          <img src="Content/Images/icon-sinavtakvimi.png" alt="" width="20" height="20">
+          ÖSYM İşlem Takvimi
+        </a>
+      </li>
+    </ul>
+
+    <!-- Center AIS Logo -->
+    <div class="appLogo" id="logoClickable" title="ÖSYM Aday İşlemleri Sistemi">
+      <img src="Content/Images/logo-ais.png" alt="ÖSYM ADAY İŞLEMLERİ SİSTEMİ" style="height: 29px; border: none; background: transparent; padding: 0;">
+    </div>
+
+    <!-- Right Help & Logout Buttons -->
+    <div class="login-view">
+      <a id="btnTopHelp" title="Yardım">
+        <img src="ÖSYM Aday İşlemleri Sistemi_files/image-yardim.png" alt="Yardım" width="77" height="25">
+      </a>
+      <a id="btnTopLogout" title="Çıkış Yap">
+        <img src="ÖSYM Aday İşlemleri Sistemi_files/image-cikisyap.png" alt="Çıkış Yap" width="89" height="25">
+      </a>
+    </div>
+  </div>
+
+  <!-- ================= GİRİŞ SAYFASI (LOGIN VIEW) ================= -->
+  <div id="loginPageWrapper">
+    <div class="login-box-card">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <img src="ÖSYM Aday İşlemleri Sistemi_files/image-logo-osym-70.png" alt="ÖSYM Logo" style="height: 52px; margin-bottom: 8px;">
+        <h2 style="font-size: 16px; font-weight: bold; color: #222; margin: 0 0 4px 0;">T.C. ÖSYM BAŞKANLIĞI</h2>
+        <p style="font-size: 13px; color: #666; margin: 0;">Aday İşlemleri Sistemi (AİS) Giriş</p>
+      </div>
+
+      <div class="login-tabs">
+        <button type="button" class="login-tab-btn active" id="tabOsymSifre">ÖSYM Şifresi ile Giriş</button>
+        <button type="button" class="login-tab-btn" id="tabEDevlet">e-Devlet ile Giriş</button>
+      </div>
+
+      <div id="loginErrorAlert" class="hidden" style="background: #ffebee; border: 1px solid #ef5350; color: #c62828; padding: 10px 14px; border-radius: 4px; font-size: 12px; font-weight: 600; margin-bottom: 16px;">
+        T.C. Kimlik Numarası veya şifreniz hatalı. Lütfen kontrol ediniz.
+      </div>
+
+      <form id="aisLoginForm">
+        <div class="form-group-osym">
+          <label for="loginTC">T.C. Kimlik / Y.U. Numarası</label>
+          <input type="text" id="loginTC" class="input-osym" placeholder="11 haneli T.C. Kimlik No" maxlength="11" value="21425132954" required>
+        </div>
+
+        <div class="form-group-osym">
+          <label for="loginPassword">AİS Şifresi</label>
+          <div style="position: relative;">
+            <input type="password" id="loginPassword" class="input-osym" placeholder="Şifreniz" value="M?Ork123" required>
+            <span id="togglePasswordBtn" style="position: absolute; right: 10px; top: 8px; cursor: pointer; font-size: 16px; user-select: none;">👁️</span>
+          </div>
+        </div>
+
+        <div class="form-group-osym">
+          <label>Güvenlik Kodu</label>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <div id="captchaBox" style="background: #e8d8be; border: 1px dashed #b59b71; border-radius: 4px; padding: 7px 16px; font-size: 16px; font-weight: bold; letter-spacing: 4px; color: #222; user-select: none; cursor: pointer;" title="Kodu Yenile">
+              7 X 4 K
+            </div>
+            <img src="Content/Images/icon-kapca-tazele.png" id="refreshCaptchaBtn" alt="Yenile" style="cursor: pointer; width: 24px; height: 24px;" title="Kodu Yenile">
+            <input type="text" id="loginCaptcha" class="input-osym" style="flex: 1;" placeholder="Kodu giriniz" value="7X4K">
+          </div>
+        </div>
+
+        <div style="margin-top: 22px;">
+          <button type="submit" class="btn-osym-submit">GİRİŞ YAP</button>
+        </div>
+
+        <div style="margin-top: 18px; text-align: center;">
+          <p style="font-size: 12px; color: #666; margin-bottom: 10px;">veya</p>
+          <a href="#" id="btnEDevletFastLogin" style="display: inline-block;">
+            <img src="ÖSYM Aday İşlemleri Sistemi_files/e-devlet-girisyap-button.png" alt="e-Devlet ile Giriş Yap" style="max-width: 100%; height: auto;">
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= PORTAL MAIN LAYOUT ================= -->
+  <div id="portalContainer" class="container main-container">
+    <div class="main-content-con">
+
+      <!-- LEFT SIDEBAR -->
+      <div class="menu">
+        <h5 class="uye-bilgi">MİKAİL ORAK</h5>
+
+        <h5>İŞLEMLER</h5>
+        <ul class="nav">
+          <li>
+            <a class="menu-box-btn" id="menuBtnBasvuruSureci">
+              <span>Başvuru Sürecindekiler</span>
+              <span style="font-size: 11px;">›</span>
+            </a>
+            <!-- Submenu matching live site -->
+            <ul class="dropdown-sub" style="z-index: 9999;">
+              <li><a class="fake-loading-trigger">2026 - ALES/3</a></li>
+              <li><a class="fake-loading-trigger">2026 - YABANCI DİL HAZIRLIK</a></li>
+              <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK ALÜGS</a></li>
+              <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK DGS</a></li>
+              <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK MSÜ</a></li>
+              <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK Müh. Tamamlama</a></li>
+              <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK ÖSYS</a></li>
+              <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK Polis Akademisi</a></li>
+              <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK YÇS</a></li>
+              <li><a class="fake-loading-trigger">2026 - İcra</a></li>
+              <li><a class="fake-loading-trigger">2026 GUY/2 Ön Başvuru</a></li>
+              <li><a class="fake-loading-trigger">2026 - DGS Ek Tercih</a></li>
+            </ul>
+          </li>
+
+          <li>
+            <a class="menu-box-btn fake-loading-trigger" id="menuBtnBasvurularim">
+              <span>Başvurularım / Tercihlerim</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="menu-box-btn active-menu" id="menuBtnSonuclarim">
+              <span>Sonuçlarım</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="menu-box-btn fake-loading-trigger" id="menuBtnEvrakNo">
+              <span>Evrak Referans Numarası</span>
+            </a>
+          </li>
+        </ul>
+
+        <h5>PROFİLİM</h5>
+        <ul class="profile-nav">
+          <li><a class="uye-islem" id="menuBtnKimlik">▪ Kimlik Bilgilerim</a></li>
+          <li><a class="uye-islem" id="menuBtnFotograf">▪ Fotoğraf Bilgilerim</a></li>
+          <li><a class="uye-islem fake-loading-trigger">▪ Adres - İletişim Bilgilerim</a></li>
+          <li><a class="uye-islem fake-loading-trigger">▪ Doğrulanmış İletişim Bilgilerim</a></li>
+          <li><a class="uye-islem fake-loading-trigger">▪ Eğitim Bilgilerim</a></li>
+          <li><a class="uye-islem fake-loading-trigger">▪ Şehit / Gazi Yakınlık Bilgilerim</a></li>
+          <li><a class="uye-islem fake-loading-trigger">▪ E-Rapor Bilgilerim</a></li>
+          <li><a class="uye-islem fake-loading-trigger">▪ Şifremi Değiştir</a></li>
+        </ul>
+      </div>
+
+      <!-- RIGHT MAIN CONTENT -->
+      <div class="main-content">
+
+        <!-- ================= VIEW 1: SONUÇLARIM (DEFAULT AS IN USER SCREENSHOT) ================= -->
+        <div id="view-sonuclarim" class="inner-cream-card">
+          <h3 class="panel-heading-title">Sonuçlarım</h3>
+
+          <table class="results-table">
+            <thead>
+              <tr>
+                <th style="min-width: 320px;">Sonuç Adı</th>
+                <th class="th-right" style="width: 140px;">Açıklama Tarihi</th>
+                <th class="th-right" style="width: 110px;">İşlem</th>
+              </tr>
+            </thead>
+            <tbody id="resultsTableBody">
+              <!-- Dynamically populated from EXAM_RESULTS_DATA -->
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3" style="text-align: right; padding-top: 22px; font-weight: bold; font-size: 13px; color: #111; border: none;">
+                  Toplam Sonuç Sayısı: <span id="totalResultsCount">9</span>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+
+        <!-- ================= VIEW 2: KİMLİK BİLGİLERİM ================= -->
+        <div id="view-kimlik" class="inner-cream-card hidden">
+          <h3 class="panel-heading-title">KİMLİK BİLGİLERİM</h3>
+
+          <!-- Warning Box -->
+          <div style="background-color: #fff9e6; border: 1px solid #ffd54f; border-radius: 6px; padding: 14px 18px; margin-bottom: 22px; display: flex; align-items: flex-start; gap: 14px;">
+            <img src="Content/Images/icon-bar-uyari.png" alt="Uyarı" style="width: 30px; height: 30px; flex-shrink: 0; background: transparent; border: none; padding: 0;">
+            <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: #333; font-weight: 600;">
+              Profilim menüsü altından kimlik bilgilerinizi güncellediğinizde mevcut başvurularınızdaki kimlik bilgileriniz güncellenmez. Sınav başvurusunda kullanılan kimlik bilgilerinizi, sınavın başvuru bilgilerini güncelleme süreci içerisinde sınavın 'Başvuru Bilgilerini Güncelle' sayfası üzerinden; sınavın başvuru bilgilerini güncelleme süreci dışında ise ÖSYM'ye dilekçe göndererek güncelleyebilirsiniz.
+            </p>
+          </div>
+
+          <!-- Kimlik Bilgileri Box -->
+          <div style="background-color: #f7eedf; border: 1px solid #edd5b3; border-radius: 6px; padding: 22px 26px; margin-bottom: 22px;">
+            <h4 style="font-size: 15px; font-weight: bold; color: #222; margin-top: 0; margin-bottom: 18px; border-bottom: 1px solid #e2cbab; padding-bottom: 6px;">Kimlik Bilgileri</h4>
+            
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+              <div style="display: grid; grid-template-columns: 180px 1fr; gap: 10px 14px; font-size: 13px; color: #222;">
+                <span style="color: #444;">T.C. Kimlik / YU No :</span><span style="font-weight: 600;">21425132954</span>
+                <span style="color: #444;">Adı :</span><span style="font-weight: 600;">MİKAİL</span>
+                <span style="color: #444;">Soyadı :</span><span style="font-weight: 600;">ORAK</span>
+                <span style="color: #444;">Baba Adı :</span><span style="font-weight: 600;">YAVUZ</span>
+                <span style="color: #444;">Anne Adı :</span><span style="font-weight: 600;">FİLİZ</span>
+                <span style="color: #444;">Doğum Yeri :</span><span style="font-weight: 600;">MÜNCHEN/ALMANYA</span>
+                <span style="color: #444;">Doğum Tarihi :</span><span style="font-weight: 600;">21.06.2002</span>
+                <span style="color: #444;">Cinsiyet :</span><span style="font-weight: 600;">ERKEK</span>
+                <span style="color: #444;">Uyruk :</span><span style="font-weight: 600;">T.C.</span>
+              </div>
+
+              <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 14px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                  <label style="font-size: 12.5px; font-weight: 600; color: #333;">Doğum Tarihi:*</label>
+                  <div style="display: flex; align-items: center; border: 1px solid #bbb; border-radius: 4px; background: #fff; padding: 4px 8px;">
+                    <input type="text" value="21.06.2002" style="border: none; outline: none; width: 85px; font-size: 13px; font-weight: 600; color: #222;" readonly>
+                    <span style="font-size: 14px; cursor: pointer;">📅</span>
+                  </div>
+                </div>
+
+                <button type="button" id="btnUpdateMernis" style="background-color: #1d1d1d; color: #fff; border: 1px solid #111; border-radius: 4px; padding: 9px 18px; font-size: 12px; font-weight: bold; cursor: pointer; transition: background 0.15s ease;">
+                  Kimlik Bilgilerini Mernis'ten Güncelle
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Info Banner -->
+          <div style="background-color: #e8f4fd; border: 1px solid #b3e5fc; border-radius: 6px; padding: 12px 18px; display: flex; align-items: center; gap: 14px;">
+            <img src="Content/Images/icon-bar-bilgi.png" alt="Bilgi" style="width: 28px; height: 28px; flex-shrink: 0; background: transparent; border: none; padding: 0;">
+            <p style="margin: 0; font-size: 12.5px; line-height: 1.5; color: #0277bd; font-weight: 600;">
+              Kimlik bilgilerinizde değişiklik varsa "Yardım" sayfasından veya 444 6796 (ÖSYM) çağrı merkezini arayarak yabancı uyruklu adayların kimlik bilgisi güncelleme süreci hakkında bilgi alabilirsiniz.
+            </p>
+          </div>
+        </div>
+
+        <!-- ================= VIEW 3: FOTOĞRAF BİLGİLERİM ================= -->
+        <div id="view-fotograf" class="inner-cream-card hidden">
+          <h3 class="panel-heading-title">FOTOĞRAF BİLGİLERİM</h3>
+
+          <div style="display: flex; gap: 26px; align-items: flex-start; margin-bottom: 26px;">
+            <img src="candidate_photo.jpg" alt="Aday Fotoğrafı" style="width: 140px; height: 175px; object-fit: cover; border: 2px solid silver; border-radius: 3px; background-color: #fff; padding: 3px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+            <div style="display: flex; flex-direction: column; justify-content: center; height: 175px;">
+              <p style="font-size: 15px; font-weight: bold; color: #111; margin: 0 0 8px 0;">Fotoğrafınız Onaylanmıştır.</p>
+              <p style="font-size: 13px; color: #333; margin: 0 0 20px 0;">Geçerlilik Tarihi : 02.02.2030</p>
+              <button type="button" id="btnUseIdCardPhoto" style="background-color: #1d1d1d; color: #fff; border: 1px solid #111; border-radius: 4px; padding: 9px 18px; font-size: 12px; font-weight: bold; cursor: pointer; align-self: flex-start; transition: background 0.15s ease;">
+                TC Kimlik Kartı Fotoğrafımı Kullan
+              </button>
+            </div>
+          </div>
+
+          <div style="border: 1px dashed #d5be9b; border-radius: 6px; background-color: #f6eedf; padding: 22px 26px;">
+            <h4 style="font-size: 16px; font-weight: bold; color: #222; margin-top: 0; margin-bottom: 14px; border-bottom: none; padding-bottom: 0;">Bilgilendirme</h4>
+            
+            <div style="font-size: 12.5px; line-height: 1.55; color: #333; display: flex; flex-direction: column; gap: 14px;">
+              <div>
+                <p style="font-weight: bold; margin: 0 0 4px 0;">• Fotoğrafın onaylanması, onay sürecinde olması ne demektir?</p>
+                <p style="margin: 0; color: #444;">Bir başvuru merkezinde çekilen her fotoğraf, ÖSYM tarafından kontrol edilmektedir.<br>Bir başvuru merkezinde çekildikten sonra henüz onay süreci bitmemiş fotoğraflar onay sürecinde gözükmektedir. T.C. Kimlik Kartı fotoğrafları için onay süreci bulunmaz.</p>
+              </div>
+
+              <div>
+                <p style="font-weight: bold; margin: 0 0 4px 0;">• Fotoğrafın geçerlilik süresi ne demektir?</p>
+                <p style="margin: 0; color: #444;">Bir başvuru merkezinde çekilerek ÖSYM sistemine aktarılan fotoğrafın geçerlilik süresi sadece yeni sınav başvurusu esnasında dikkate alınmaktadır.<br>Başvuru merkezlerinde çekilen bir fotoğrafın geçerlilik süresi ÖSYM Yönetim Kurulu tarafından 50 ay olarak belirlenmiştir. Adaylar başvurularını tamamladıktan sonra fotoğraflarının geçerlilik süreleri dolsa bile ilgili sınava girebilecekler ve sınava bağlı tercih bildirimlerini yapabileceklerdir. T.C. Kimlik Kartındaki fotoğraflarının son geçerlilik tarihi ilgili kimlik kartının son geçerlilik tarihiyle aynıdır.</p>
+              </div>
+
+              <div>
+                <p style="font-weight: bold; margin: 0 0 4px 0;">• Fotoğrafımı değiştirmek istiyorum ne yapmalıyım?</p>
+                <p style="margin: 0; color: #444;">Adayın, bir başvuru merkezinde çekilen fotoğrafı, sınav güvenliği nedeniyle 45 ay boyunca değiştirilemez. T.C. Kimlik Kartındaki fotoğrafları için bu süre uygulanmaz.<br><br>
+                Özel durumu olan adaylar, bir başvuru merkezinde çekilen fotoğrafını, belgelendirmek koşuluyla başkanlığımıza dilekçe göndererek değiştirme talebinde bulunabilirler.<br>
+                T.C. Kimlik Kartı olan adaylar, aday işlemleri sistemindeki fotoğraflarını, başkanlığımıza herhangi bir bildirim yapmaksızın aday işlemleri sisteminden TC Kimlik Kartı Fotoğrafımı Kullan diyerek doğrudan güncelleyebileceklerdir.<br>
+                Yeni T.C Kimlik kartına sahip olan adaylar, başkanlığımıza herhangi bir bilgilendirme yapmaksızın sınav başvurularının son gününe kadar (Geç başvuru tarihi dahil) profilde yer alan fotoğraf bilgilerim bölümündeki TC Kimlik Kartı Fotoğrafımı Kullan diyerek güncelleme yapabileceklerdir.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= VIEW 4: BAŞVURU SÜRECİNDEKİLER / ANA SAYFA ================= -->
+        <div id="view-anasayfa" class="inner-cream-card hidden">
+          <!-- Bilgilendirme -->
+          <div style="background-color: #faf5ee; border: 1px solid #ebd0a8; border-radius: 6px; padding: 14px 18px; margin-bottom: 20px;">
+            <h3 style="font-size: 16px; font-weight: bold; color: #3c3636; margin: 0 0 8px 0; border: none; padding: 0;">Bilgilendirme</h3>
+            <span style="font-size: 12px; line-height: 1.5; color: #333; display: inline-block;">
+              Başkanlığımızca sunulması planlanan yeni hizmetler için kısa mesaj ve e-posta doğrulama işlemleri yapılacaktır. Telefon numarası ve e-posta adresi doğrulama işlemlerinizi bu ekranda yapabilirsiniz. Kullanıcı hesabı güvenliğiniz için yalnızca kendinize ait telefon numarası ve e-posta adresi bilgilerinizi sisteme kaydetmeniz gerekmektedir. Telefon numarası ve e-posta adresi doğrulama ve doğrulanmış bilgilerinizi güncelleme işlemlerinizi daha sonra "Doğrulanmış İletişim Bilgilerim" menüsünden gerçekleştirebilirsiniz.
+            </span>
+          </div>
+
+          <!-- Sınav Süreç Tablosu -->
+          <div style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+            <span style="font-weight: bold; font-size: 13px;">İşlem Tipi:</span>
+            <select id="selectIslemTipi" style="padding: 4px 8px; border-radius: 4px; border: 1px solid #bbb;">
+              <option value="0">Güncel İşlemler</option>
+              <option value="1">Başvurular</option>
+              <option value="2">Tercihler</option>
+            </select>
+          </div>
+
+          <table class="results-table" style="font-size: 12px;">
+            <thead>
+              <tr style="background: #f0e6d5;">
+                <th style="padding: 8px;">SINAV / TERCİH ADI</th>
+                <th style="padding: 8px;">İŞLEM TİPİ</th>
+                <th style="padding: 8px;">SINAVIN TARİHİ</th>
+                <th style="padding: 8px;">İŞLEM TARİHLERİ</th>
+                <th style="padding: 8px;">DURUMU</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>2026 - ALES/3</strong> <img src="ÖSYM Aday İşlemleri Sistemi_files/icon-songun.png" width="55" height="26" alt="Son Gün" style="vertical-align: middle; margin-left: 6px;"></td>
+                <td>Başvuru</td>
+                <td>29.11.2026</td>
+                <td>21.10.2026 10.00 - 21.10.2026 23.59</td>
+                <td style="color: #2e7d32; font-weight: bold;">Devam Ediyor</td>
+              </tr>
+              <tr>
+                <td><strong>2026 - İYÖS</strong> <img src="ÖSYM Aday İşlemleri Sistemi_files/icon-yeni.png" width="55" height="26" alt="Yeni" style="vertical-align: middle; margin-left: 6px;"></td>
+                <td>Cevap Kağıdı Görüntüleme</td>
+                <td>27.09.2026</td>
+                <td>21.10.2026 11.15</td>
+                <td style="color: #2e7d32; font-weight: bold;">Görüntüleme Başladı</td>
+              </tr>
+              <tr>
+                <td><strong>2026 - HMGS/2</strong> <img src="ÖSYM Aday İşlemleri Sistemi_files/icon-yeni.png" width="55" height="26" alt="Yeni" style="vertical-align: middle; margin-left: 6px;"></td>
+                <td>Cevap Kağıdı Görüntüleme</td>
+                <td>27.09.2026</td>
+                <td>21.10.2026 11.15</td>
+                <td style="color: #2e7d32; font-weight: bold;">Görüntüleme Başladı</td>
+              </tr>
+              <tr>
+                <td><strong>2026 - İcra</strong> <img src="ÖSYM Aday İşlemleri Sistemi_files/icon-yeni.png" width="55" height="26" alt="Yeni" style="vertical-align: middle; margin-left: 6px;"></td>
+                <td>Başvuru</td>
+                <td>05.12.2026</td>
+                <td>20.10.2026 10.00 - 26.10.2026 23.59</td>
+                <td style="color: #2e7d32; font-weight: bold;">Devam Ediyor</td>
+              </tr>
+              <tr>
+                <td><strong>2026 GUY/2 Ön Başvuru</strong> <img src="ÖSYM Aday İşlemleri Sistemi_files/icon-yeni.png" width="55" height="26" alt="Yeni" style="vertical-align: middle; margin-left: 6px;"></td>
+                <td>Tercih</td>
+                <td>-</td>
+                <td>20.10.2026 10.30 - 22.10.2026 23.59</td>
+                <td style="color: #2e7d32; font-weight: bold;">Devam Ediyor</td>
+              </tr>
+              <tr>
+                <td><strong>2026 - YABANCI DİL HAZIRLIK</strong> <img src="ÖSYM Aday İşlemleri Sistemi_files/icon-yeni.png" width="55" height="26" alt="Yeni" style="vertical-align: middle; margin-left: 6px;"></td>
+                <td>Başvuru</td>
+                <td>-</td>
+                <td>19.10.2026 15.30 - 02.11.2026 23.59</td>
+                <td style="color: #2e7d32; font-weight: bold;">Devam Ediyor</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <div class="footer">
+    <div class="container" style="position: relative;">
+      <img src="ÖSYM Aday İşlemleri Sistemi_files/icon-callcenter.png" alt="444 6796 ÖSYM Çağrı Merkezi">
+      <span>T.C. Ölçme, Seçme ve Yerleştirme Merkezi © 2013 - Her Hakkı Saklıdır.</span>
+    </div>
+  </div>
+
+  <!-- ================= CONTINUOUS LOADING SPINNER ================= -->
+  <div id="loading">
+    <div id="loadingBox">
+      <img src="ÖSYM Aday İşlemleri Sistemi_files/image-loading.gif" alt="Yükleniyor..." width="48" height="48">
+      <span style="color: #f29b19; font-size: 15px; font-weight: bold;">Lütfen Bekleyiniz...</span>
+      <span style="color: #bbb; font-size: 11px; margin-top: 5px;">(Kapatmak için tıklayınız)</span>
+    </div>
+  </div>
+
+  <!-- ================= RESULT DOCUMENT MODAL (SONUÇ BELGESİ) ================= -->
+  <div id="resultDocModal">
+    <div class="result-sheet">
+      <!-- Top header with Logo & QR Code -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px;">
+        <div style="width: 58px;"></div>
+        <div style="text-align: center;">
+          <img src="ÖSYM Aday İşlemleri Sistemi_files/image-logo-osym-70.png" alt="ÖSYM" style="height: 52px; border: none; background: transparent; padding: 0;">
+        </div>
+        <div>
+          <img src="Content/Images/osym-qrcode.png" alt="QR Kod" style="width: 56px; height: 56px; border: 1px solid #ddd; padding: 2px;">
+        </div>
+      </div>
+
+      <!-- Title -->
+      <div style="text-align: center; margin-bottom: 22px;">
+        <h2 id="modalExamTitle" style="font-size: 16.5px; font-weight: bold; color: #000; margin: 0 0 4px 0; border: none; padding: 0;">
+          2026/2 Adalet Bakanlığı Hukuk Mesleklerine Giriş Sınavı (HMGS)
+        </h2>
+        <h3 style="font-size: 16.5px; font-weight: bold; color: #000; margin: 0; border: none; padding: 0; text-align: center;">
+          Sonuçları
+        </h3>
+      </div>
+
+      <!-- Candidate Box -->
+      <div style="display: flex; justify-content: center; margin-bottom: 20px;">
+        <div style="display: flex; border: 1px solid #000; width: 450px;">
+          <div style="width: 120px; border-right: 1px solid #000; padding: 8px; display: flex; align-items: center; justify-content: center; background: #fff;">
+            <img src="candidate_photo.jpg" alt="Aday Fotoğrafı" style="width: 100px; height: 125px; object-fit: cover; border: none; padding: 0;">
+          </div>
+          <table style="flex: 1; border-collapse: collapse; font-size: 12px; color: #000;">
+            <tr style="border-bottom: 1px solid #000;">
+              <td style="padding: 6px 10px; font-weight: bold; width: 145px; border-right: 1px solid #000; background: #fafafa;">T.C. Kimlik Numarası</td>
+              <td style="padding: 6px 10px;">21425132954</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #000;">
+              <td style="padding: 6px 10px; font-weight: bold; border-right: 1px solid #000; background: #fafafa;">Adı ve Soyadı</td>
+              <td style="padding: 6px 10px; font-weight: bold;">MİKAİL ORAK</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #000;">
+              <td style="padding: 6px 10px; font-weight: bold; border-right: 1px solid #000; background: #fafafa;">Sınav Tarihi</td>
+              <td id="modalExamDate" style="padding: 6px 10px;">27 Eylül 2026</td>
+            </tr>
+            <tr>
+              <td style="padding: 6px 10px; font-weight: bold; border-right: 1px solid #000; background: #fafafa;">Sonuç Açıklama Tarihi</td>
+              <td id="modalResultDate" style="padding: 6px 10px;">21 Ekim 2026</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Correct / Wrong Table -->
+      <table style="width: 100%; border-collapse: collapse; border: 1px solid #000; margin-bottom: 18px; font-size: 12px; text-align: center;">
+        <thead>
+          <tr style="border-bottom: 1px solid #000; background: #fafafa;">
+            <th colspan="2" style="padding: 6px; font-weight: bold; border: none;">TESTTEKİ DOĞRU VE YANLIŞ SAYILARI</th>
+          </tr>
+          <tr style="border-bottom: 1px solid #000;">
+            <th style="width: 50%; padding: 6px; font-weight: normal; border-right: 1px solid #000;">Doğru Sayısı</th>
+            <th style="width: 50%; padding: 6px; font-weight: normal;">Yanlış Sayısı</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="modalCorrectCount" style="padding: 7px; font-weight: bold; border-right: 1px solid #000;">94</td>
+            <td id="modalWrongCount" style="padding: 7px; font-weight: bold;">22</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Score & Status Table -->
+      <table style="width: 100%; border-collapse: collapse; border: 1px solid #000; margin-bottom: 22px; font-size: 12px; text-align: center;">
+        <thead>
+          <tr style="border-bottom: 1px solid #000; background: #fafafa;">
+            <th colspan="2" style="padding: 6px; font-weight: bold; border: none;">SINAV PUANI VE BAŞARI DURUMU</th>
+          </tr>
+          <tr style="border-bottom: 1px solid #000;">
+            <th style="width: 50%; padding: 6px; font-weight: normal; border-right: 1px solid #000;">Puan</th>
+            <th style="width: 50%; padding: 6px; font-weight: normal;">Başarı Durumu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="modalExamScore" style="padding: 7px; font-weight: bold; border-right: 1px solid #000;">93,22013</td>
+            <td id="modalExamStatus" style="padding: 7px; font-weight: bold;">BAŞARILI</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Legal text -->
+      <div style="font-size: 11px; text-align: center; color: #000; margin-bottom: 14px; font-weight: 600; line-height: 1.4;">
+        <p id="modalLegalText" style="margin: 0;">Bu belge, sınav tarihi itibarıyla HUKUK MESLEKLERİNE GİRİŞ SINAVI VE İDARİ YARGI ÖN SINAVI YÖNETMELİĞİ'nin 5 inci maddesinde öngörülen şartları sağlayan adaylar için geçerlidir.</p>
+      </div>
+
+      <!-- Verification text -->
+      <div style="font-size: 10.5px; text-align: center; color: #444; margin-bottom: 25px; line-height: 1.4;">
+        <p style="margin: 0; font-style: italic;">(Bu belgenin aslına ilişkin sorgulama https://sonuc.osym.gov.tr/BelgeKontrol.aspx Internet adresinden yapılabilir.)</p>
+        <p style="margin: 2px 0 0 0; font-weight: bold; color: #111;">Sonuç Belgesi Kontrol Kodu: <span id="modalControlCode">89BXM92K</span></p>
+      </div>
+
+      <!-- Actions -->
+      <div style="display: flex; justify-content: center; gap: 15px; border-top: 1px solid #eee; padding-top: 18px;">
+        <button onclick="window.print()" style="background-color: #555; color: #fff; border: none; border-radius: 4px; padding: 8px 24px; font-size: 13px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px;">
+          <img src="Content/Images/icon-yazdir.png" alt="" style="width: 16px; height: 16px; border: none; background: transparent; padding: 0;"> Yazdır
+        </button>
+        <button id="btnModalClose" style="background-color: #d32f2f; color: #fff; border: none; border-radius: 4px; padding: 8px 24px; font-size: 13px; font-weight: bold; cursor: pointer;">
+          Kapat
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= JAVASCRIPT LOGIC ================= -->
+  <script>
+    // 9 Official Results matching user screenshot & sheets
+    const EXAM_RESULTS_DATA = [
+      {
+        id: "HMGS-2026-2",
+        title: "2026/2 Adalet Bakanlığı Hukuk Mesleklerine Giriş Sınavı (HMGS) Sonuçları",
+        examTitleClean: "2026/2 Adalet Bakanlığı Hukuk Mesleklerine Giriş Sınavı (HMGS)",
+        examDate: "27 Eylül 2026",
+        resultDate: "21.10.2026",
+        correctCount: "94",
+        wrongCount: "22",
+        score: "93,22013",
+        status: "BAŞARILI",
+        controlCode: "89BXM92K",
+        legalText: "Bu belge, sınav tarihi itibarıyla HUKUK MESLEKLERİNE GİRİŞ SINAVI VE İDARİ YARGI ÖN SINAVI YÖNETMELİĞİ'nin 5 inci maddesinde öngörülen şartları sağlayan adaylar için geçerlidir."
+      },
+      {
+        id: "HMGS-2026-1",
+        title: "2026/1 Adalet Bakanlığı Hukuk Mesleklerine Giriş Sınavı (HMGS) Sonuçları",
+        examTitleClean: "2026/1 Adalet Bakanlığı Hukuk Mesleklerine Giriş Sınavı (HMGS)",
+        examDate: "26 Nisan 2026",
+        resultDate: "11.05.2026",
+        correctCount: "89",
+        wrongCount: "31",
+        score: "80,83333",
+        status: "BAŞARISIZ",
+        controlCode: "45ALCNZM",
+        legalText: "Bu belge, sınav tarihi itibarıyla HUKUK MESLEKLERİNE GİRİŞ SINAVI VE İDARİ YARGI ÖN SINAVI YÖNETMELİĞİ'nin 5 inci maddesinde öngörülen şartları sağlayan adaylar için geçerlidir."
+      },
+      {
+        id: "YDS-2026-1",
+        title: "2026/1 Yabancı Dil Bilgisi Seviye Tespit Sınavı (YDS) Sonuçları",
+        examTitleClean: "2026/1 Yabancı Dil Bilgisi Seviye Tespit Sınavı (YDS)",
+        examDate: "12 Nisan 2026",
+        resultDate: "28.04.2026",
+        correctCount: "69",
+        wrongCount: "11",
+        score: "86,25000",
+        status: "B Düzeyi (BAŞARILI)",
+        controlCode: "77D2Y91F",
+        legalText: "Bu belge, Yabancı Dil Bilgisi Seviye Belirleme Usul ve Esasları Hakkında Yönetmelik uyarınca geçerlidir."
+      },
+      {
+        id: "YOKDIL-2026-1",
+        title: "2026/1 Yükseköğretim Kurumları Yabancı Dil Sınavı (YÖKDİL) Sonuçları",
+        examTitleClean: "2026/1 Yükseköğretim Kurumları Yabancı Dil Sınavı (YÖKDİL)",
+        examDate: "28 Şubat 2026",
+        resultDate: "18.03.2026",
+        correctCount: "73",
+        wrongCount: "7",
+        score: "91,25000",
+        status: "A Düzeyi (BAŞARILI)",
+        controlCode: "D44A21E6",
+        legalText: "Bu belge, Yükseköğretim Kurumları Yabancı Dil Sınavı Kılavuzunda öngörülen şartlar için geçerlidir."
+      },
+      {
+        id: "HMGS-2025-2-YENI",
+        title: "2025/2 Hukuk Mesleklerine Giriş Sınavı (HMGS) Yeni Değerlendirme Sonuçları",
+        examTitleClean: "2025/2 Hukuk Mesleklerine Giriş Sınavı (HMGS) Yeni Değerlendirme",
+        examDate: "28 Eylül 2025",
+        resultDate: "04.02.2026",
+        correctCount: "68",
+        wrongCount: "30",
+        score: "69,50000",
+        status: "BAŞARISIZ",
+        controlCode: "H7829901",
+        legalText: "İptal edilen sorular değerlendirme dışı bırakılarak yeniden hesaplanan resmi sonuç belgesidir."
+      },
+      {
+        id: "HMGS-2025-2",
+        title: "2025/2 Hukuk Mesleklerine Giriş Sınavı (HMGS) Sonuçları",
+        examTitleClean: "2025/2 Hukuk Mesleklerine Giriş Sınavı (HMGS)",
+        examDate: "28 Eylül 2025",
+        resultDate: "23.10.2025",
+        correctCount: "67",
+        wrongCount: "33",
+        score: "67,00000",
+        status: "BAŞARISIZ",
+        controlCode: "HM990012",
+        legalText: "Bu belge, sınav tarihi itibarıyla ilgili yönetmelik hükümleri uyarınca geçerlidir."
+      },
+      {
+        id: "YKS-2020-YERLESTIRME",
+        title: "2020-YKS Yerleştirme Sonuçları",
+        examTitleClean: "2020 Yükseköğretim Kurumları Sınavı (YKS) Yerleştirme",
+        examDate: "27-28 Haziran 2020",
+        resultDate: "26.08.2020",
+        correctCount: "Yerleşti",
+        wrongCount: "Kayıt Hakkı Kazandı",
+        score: "462,45000",
+        status: "ANKARA ÜNV. HUKUK FAKÜLTESİ",
+        controlCode: "YER2020A1",
+        legalText: "Aday bu sonuç ile ilgili yükseköğretim programına kayıt yaptırma hakkı kazanmıştır."
+      },
+      {
+        id: "YKS-2020",
+        title: "2020 YKS Sonuçları",
+        examTitleClean: "2020 Yükseköğretim Kurumları Sınavı (YKS)",
+        examDate: "27-28 Haziran 2020",
+        resultDate: "27.07.2020",
+        correctCount: "TYT: 100 / AYT: 69",
+        wrongCount: "TYT: 13 / AYT: 7",
+        score: "EA: 442,85000",
+        status: "BAŞARILI (Tercih Yapabilir)",
+        controlCode: "YKS2020C2",
+        legalText: "YKS sonuç belgesi üniversite yerleştirme işlemleri için resmi belgedir."
+      },
+      {
+        id: "MSU-2020",
+        title: "2020-Milli Savunma Üniversitesi Askeri Öğrenci Aday Belirleme Sınavı Sonuçları",
+        examTitleClean: "2020-Milli Savunma Üniversitesi Askeri Öğrenci Aday Belirleme Sınavı (MSÜ)",
+        examDate: "14 Haziran 2020",
+        resultDate: "02.07.2020",
+        correctCount: "94",
+        wrongCount: "19",
+        score: "419,65000",
+        status: "BAŞARILI (Çağrıya Hak Kazandı)",
+        controlCode: "MSU2020D4",
+        legalText: "Milli Savunma Üniversitesi 2. seçim aşamaları için geçerli sonuç belgesidir."
+      }
+    ];
+
+    document.addEventListener("DOMContentLoaded", function () {
+      initPortal();
+    });
+
+    function initPortal() {
+      renderResultsTable();
+      setupNavigation();
+      setupAuth();
+      setupLoadingTriggers();
+      setupModal();
+      setupActionButtons();
+    }
+
+    // 1. Render Results
+    function renderResultsTable() {
+      const tbody = document.getElementById("resultsTableBody");
+      if (!tbody) return;
+      tbody.innerHTML = "";
+
+      EXAM_RESULTS_DATA.forEach(function (exam) {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${exam.title}</td>
+          <td style="text-align: right; font-weight: 500;">${exam.resultDate}</td>
+          <td style="text-align: right;">
+            <a class="btn-view-result" data-exam-id="${exam.id}">Görüntüle</a>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      document.querySelectorAll(".btn-view-result").forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+          const examId = e.currentTarget.getAttribute("data-exam-id");
+          openResultDocument(examId);
+        });
+      });
+    }
+
+    // 2. Navigation between Views
+    function setupNavigation() {
+      const menuSonuclarim = document.getElementById("menuBtnSonuclarim");
+      const menuKimlik = document.getElementById("menuBtnKimlik");
+      const menuFotograf = document.getElementById("menuBtnFotograf");
+      const menuBasvuruSureci = document.getElementById("menuBtnBasvuruSureci");
+      const navHomeLink = document.getElementById("navHomeLink");
+      const navCalendarLink = document.getElementById("navCalendarLink");
+      const logoClickable = document.getElementById("logoClickable");
+
+      const viewSonuclarim = document.getElementById("view-sonuclarim");
+      const viewKimlik = document.getElementById("view-kimlik");
+      const viewFotograf = document.getElementById("view-fotograf");
+      const viewAnasayfa = document.getElementById("view-anasayfa");
+
+      function switchView(targetBtn, targetView) {
+        document.querySelectorAll(".menu-box-btn, .uye-islem").forEach(function (el) {
+          el.classList.remove("active-menu");
+        });
+        if (targetBtn) targetBtn.classList.add("active-menu");
+
+        [viewSonuclarim, viewKimlik, viewFotograf, viewAnasayfa].forEach(function (v) {
+          if (v) v.classList.add("hidden");
+        });
+        if (targetView) targetView.classList.remove("hidden");
+        window.scrollTo(0, 0);
+      }
+
+      if (menuSonuclarim) {
+        menuSonuclarim.addEventListener("click", function () {
+          switchView(menuSonuclarim, viewSonuclarim);
+        });
+      }
+
+      if (menuKimlik) {
+        menuKimlik.addEventListener("click", function () {
+          switchView(menuKimlik, viewKimlik);
+        });
+      }
+
+      if (menuFotograf) {
+        menuFotograf.addEventListener("click", function () {
+          switchView(menuFotograf, viewFotograf);
+        });
+      }
+
+      if (menuBasvuruSureci) {
+        menuBasvuruSureci.addEventListener("click", function () {
+          switchView(menuBasvuruSureci, viewAnasayfa);
+        });
+      }
+
+      if (navHomeLink) {
+        navHomeLink.addEventListener("click", function (e) {
+          e.preventDefault();
+          switchView(menuBasvuruSureci, viewAnasayfa);
+        });
+      }
+
+      if (navCalendarLink) {
+        navCalendarLink.addEventListener("click", function (e) {
+          e.preventDefault();
+          switchView(menuBasvuruSureci, viewAnasayfa);
+        });
+      }
+
+      if (logoClickable) {
+        logoClickable.addEventListener("click", function () {
+          switchView(menuSonuclarim, viewSonuclarim);
+        });
+      }
+    }
+
+    // 3. Authentication (Login / Logout)
+    function setupAuth() {
+      const loginWrapper = document.getElementById("loginPageWrapper");
+      const portalContainer = document.getElementById("portalContainer");
+      const btnTopLogout = document.getElementById("btnTopLogout");
+      const loginForm = document.getElementById("aisLoginForm");
+      const loginErrorAlert = document.getElementById("loginErrorAlert");
+      const inputTC = document.getElementById("loginTC");
+      const inputPassword = document.getElementById("loginPassword");
+      const togglePasswordBtn = document.getElementById("togglePasswordBtn");
+      const btnEDevletFastLogin = document.getElementById("btnEDevletFastLogin");
+
+      // Password toggle
+      if (togglePasswordBtn && inputPassword) {
+        togglePasswordBtn.addEventListener("click", function () {
+          const isPass = inputPassword.type === "password";
+          inputPassword.type = isPass ? "text" : "password";
+          togglePasswordBtn.textContent = isPass ? "🙈" : "👁️";
+        });
+      }
+
+      // Logout handler
+      if (btnTopLogout) {
+        btnTopLogout.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (portalContainer && !portalContainer.classList.contains("hidden")) {
+            portalContainer.classList.add("hidden");
+            if (loginWrapper) loginWrapper.classList.add("active");
+            if (loginErrorAlert) loginErrorAlert.classList.add("hidden");
+            window.scrollTo(0, 0);
+          } else {
+            showContinuousLoading();
+          }
+        });
+      }
+
+      // Login form handler
+      if (loginForm) {
+        loginForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const tc = inputTC.value.trim();
+          const pass = inputPassword.value.trim();
+
+          if (tc === "21425132954" && pass === "M?Ork123") {
+            if (loginErrorAlert) loginErrorAlert.classList.add("hidden");
+            if (loginWrapper) loginWrapper.classList.remove("active");
+            if (portalContainer) portalContainer.classList.remove("hidden");
+            
+            // Switch to Sonuçlarım
+            const menuSonuclarim = document.getElementById("menuBtnSonuclarim");
+            if (menuSonuclarim) menuSonuclarim.click();
+            window.scrollTo(0, 0);
+          } else {
+            if (loginErrorAlert) loginErrorAlert.classList.remove("hidden");
+          }
+        });
+      }
+
+      if (btnEDevletFastLogin) {
+        btnEDevletFastLogin.addEventListener("click", function (e) {
+          e.preventDefault();
+          if (loginWrapper) loginWrapper.classList.remove("active");
+          if (portalContainer) portalContainer.classList.remove("hidden");
+          const menuSonuclarim = document.getElementById("menuBtnSonuclarim");
+          if (menuSonuclarim) menuSonuclarim.click();
+        });
+      }
+    }
+
+    // 4. Continuous Loading Simulator for Dummy Links
+    function setupLoadingTriggers() {
+      const loadingEl = document.getElementById("loading");
+      document.querySelectorAll(".fake-loading-trigger").forEach(function (btn) {
+        btn.addEventListener("click", function (e) {
+          e.preventDefault();
+          showContinuousLoading();
+        });
+      });
+
+      if (loadingEl) {
+        loadingEl.addEventListener("click", function () {
+          loadingEl.classList.remove("active");
+        });
+      }
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          if (loadingEl) loadingEl.classList.remove("active");
+          closeResultDocument();
+        }
+      });
+    }
+
+    function showContinuousLoading() {
+      const loadingEl = document.getElementById("loading");
+      if (loadingEl) loadingEl.classList.add("active");
+    }
+
+    // 5. Official Result Document Modal
+    function setupModal() {
+      const modal = document.getElementById("resultDocModal");
+      const btnClose = document.getElementById("btnModalClose");
+
+      if (btnClose) btnClose.addEventListener("click", closeResultDocument);
+      if (modal) {
+        modal.addEventListener("click", function (e) {
+          if (e.target === modal) closeResultDocument();
+        });
+      }
+    }
+
+    function openResultDocument(examId) {
+      const exam = EXAM_RESULTS_DATA.find(function (e) { return e.id === examId; });
+      if (!exam) return;
+
+      const modal = document.getElementById("resultDocModal");
+      document.getElementById("modalExamTitle").textContent = exam.examTitleClean;
+      document.getElementById("modalExamDate").textContent = exam.examDate;
+      document.getElementById("modalResultDate").textContent = exam.resultDate;
+      document.getElementById("modalCorrectCount").textContent = exam.correctCount;
+      document.getElementById("modalWrongCount").textContent = exam.wrongCount;
+      document.getElementById("modalExamScore").textContent = exam.score;
+      document.getElementById("modalExamStatus").textContent = exam.status;
+      document.getElementById("modalLegalText").textContent = exam.legalText;
+      document.getElementById("modalControlCode").textContent = exam.controlCode;
+
+      if (modal) modal.classList.add("active");
+    }
+
+    function closeResultDocument() {
+      const modal = document.getElementById("resultDocModal");
+      if (modal) modal.classList.remove("active");
+    }
+
+    // 6. Action buttons
+    function setupActionButtons() {
+      const btnMernis = document.getElementById("btnUpdateMernis");
+      const btnPhoto = document.getElementById("btnUseIdCardPhoto");
+
+      if (btnMernis) {
+        btnMernis.addEventListener("click", function () {
+          const original = btnMernis.textContent;
+          btnMernis.textContent = "MERNİS Sorgulanıyor...";
+          btnMernis.disabled = true;
+          setTimeout(function () {
+            btnMernis.textContent = "✓ Bilgiler MERNİS'ten Güncellendi";
+            setTimeout(function () {
+              btnMernis.textContent = original;
+              btnMernis.disabled = false;
+            }, 2000);
+          }, 800);
+        });
+      }
+
+      if (btnPhoto) {
+        btnPhoto.addEventListener("click", function () {
+          const original = btnPhoto.textContent;
+          btnPhoto.textContent = "Fotoğraf Doğrulanıyor...";
+          btnPhoto.disabled = true;
+          setTimeout(function () {
+            btnPhoto.textContent = "✓ T.C. Kimlik Kartı Fotoğrafı Güncellendi";
+            setTimeout(function () {
+              btnPhoto.textContent = original;
+              btnPhoto.disabled = false;
+            }, 2000);
+          }, 800);
+        });
+      }
+    }
+  </script>
+</body>
+</html>

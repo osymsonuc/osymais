@@ -1,0 +1,253 @@
+﻿/*
+    How to use this function 
+    ############################################################################################
+
+     function confirmFunction() {
+         console.log("i am in confirm")
+     }
+
+     function confirmFunction2() {
+         console.log("i am in confirm 2")
+     }
+
+     function cancelFunction() {
+         console.log("i am in cancel")
+     }
+
+     function buttonClick() {
+         OSYM.confirm(
+             {
+                 width: '800px',
+                 title: "Uyarı",
+                 messageText: "Uyarı Metni",
+                 confirmButton1Text: "Tek Oturum İçin Kaydet",
+                 confirmButton2Text: "Tüm Oturumlar İçin Kaydet",
+                 cancelFunction: cancelFunction,
+                 cancelButtonText: "İptal",
+                 confirmFunction1: confirmFunction,
+                 confirmFunction2: confirmFunction2,
+                 messageType:"info"
+             });
+     }
+
+     messageTypes -->>  "info","success","warning","danger"
+
+    ############################################################################################
+*/
+
+
+var head = document.getElementsByTagName('head')[0];
+var link = document.createElement('link');
+link.rel = 'stylesheet';
+link.type = 'text/css';
+link.href = location.origin + '/Content/Css/osym.messagePopup.css';
+head.appendChild(link);
+
+function getPageHeight() {
+    var body = document.body, html = document.documentElement;
+    var height = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight);
+
+    return height;
+
+}
+
+function arrangeCss(dialogWidth, dialogHeight, dialogTop, dialogLeft, messageType) {
+
+    var overlayElementArray = document.getElementsByClassName('dialog-overlay');
+
+    var pageHeight = getPageHeight();
+
+    overlayElementArray[0].style.height = pageHeight + 'px';
+
+    var dialogElementArray = document.getElementsByClassName('dialog');
+
+    dialogElementArray[0].style.width = dialogWidth;
+
+    var dialogMessageElementArray = document.getElementsByClassName('dialog-msg');
+
+    dialogMessageElementArray[0].style.height = dialogHeight;
+
+    if (dialogTop !== undefined) {
+        dialogElementArray[0].style.top = dialogTop;
+    }
+    if (dialogLeft !== undefined) {
+        dialogElementArray[0].style.left = dialogLeft;
+    }
+
+    if (messageType !== undefined) {
+        var dialogHeaderElementArray = document.getElementsByClassName('header-wrapper');
+        var dialogHeaderTextElementArray = document.getElementsByClassName('header-text');
+
+        dialogHeaderTextElementArray[0].style.color = "white";
+
+        if (messageType === "info") {
+            dialogHeaderElementArray[0].style.background = "#337ab7";
+        }
+        else if (messageType === "success") {
+            dialogHeaderElementArray[0].style.background = "#5cb85c";
+        }
+        else if (messageType === "warning") {
+            dialogHeaderElementArray[0].style.background = "#f0ad4e";
+        }
+        else if (messageType === "danger") {
+            dialogHeaderElementArray[0].style.background = "#d9534f";
+        }
+    }
+}
+
+const OSYM =
+{
+    basePopup: function ({
+        title: title,
+        messageText: messageText,
+        width: width,
+        height: height,
+        top: top,
+        left: left,
+        applyButton1Text: applyButton1Text,
+        applyButton2Text: applyButton2Text,
+        cancelButtonText: cancelButtonText,
+        applyFunction1: applyFunction1,
+        applyFunction2: applyFunction2,
+        cancelFunction: cancelFunction,
+        messageType: messageType }) {
+
+        if (cancelFunction === undefined) {
+            cancelFunction = function () { };
+        }
+
+        /** Message */
+        let overlay = document.createElement('div');
+        overlay.classList.add('dialog-overlay');
+
+        /** Main Dialog */
+        let dialog = document.createElement('div');
+        dialog.classList.add('dialog');
+
+        overlay.appendChild(dialog);
+
+        let header = document.createElement('header');
+        let h3 = document.createElement('h3');
+        h3.textContent = title ?? 'Uyarı';
+
+        header.appendChild(h3);
+        header.classList.add('header-wrapper');
+        h3.classList.add('header-text');
+
+        /** Message */
+        let dialogMessage = document.createElement('div');
+        dialogMessage.classList.add('dialog-msg');
+
+        //let dialogMessageP = document.createElement('p');
+        //dialogMessage.appendChild(dialogMessageP);
+        //dialogMessageP.textContent = messageText;
+
+        let dialogMessageDiv = document.createElement('div');
+        dialogMessage.appendChild(dialogMessageDiv);
+        dialogMessageDiv.innerHTML = messageText;
+
+        /** Footer */
+        let footer = document.createElement('footer');
+        let controls = document.createElement('div');
+        controls.classList.add('controls');
+
+        let cancelButton = document.createElement('button');
+        cancelButton.classList.add('button', 'button-default', 'cancelAction')
+        cancelButton.textContent = cancelButtonText ?? 'İptal';
+
+        if (applyFunction1 !== undefined) {
+            let applyButton1 = document.createElement('button');
+            applyButton1.classList.add('button', 'button-danger', 'doAction')
+            applyButton1.textContent = applyButton1Text ?? 'Tamam';
+            controls.appendChild(applyButton1);
+
+            applyButton1.addEventListener('click', () => {
+                document.body.removeChild(overlay)
+                applyFunction1();
+            });
+        }
+
+        if (applyFunction2 !== undefined) {
+            let applyButton2 = document.createElement('button');
+            applyButton2.classList.add('button', 'button-danger', 'doAction')
+            applyButton2.textContent = applyButton2Text ?? 'Tamam';
+            controls.appendChild(applyButton2);
+
+            applyButton2.addEventListener('click', () => {
+                document.body.removeChild(overlay)
+                applyFunction2();
+            });
+        }
+
+        controls.appendChild(cancelButton);
+        footer.appendChild(controls);
+
+        dialog.appendChild(header);
+        dialog.appendChild(dialogMessage);
+        dialog.appendChild(footer);
+
+        document.body.appendChild(overlay);
+
+        arrangeCss(width, height, top, left, messageType);
+
+        cancelButton.addEventListener('click', () => {
+            document.body.removeChild(overlay)
+            cancelFunction();
+        });
+    },
+
+    popupMessage: function ({
+        title: title,
+        messageText: messageText,
+        width: width,
+        height: height,
+        top: top,
+        left: left,
+        cancelButtonText: cancelButtonText,
+        cancelFunction: cancelFunction,
+        messageType: messageType }) {
+
+        this.basePopup({
+            title: title,
+            messageText: messageText,
+            width: width,
+            height: height,
+            top: top,
+            left: left,
+            cancelButtonText: cancelButtonText,
+            cancelFunction: cancelFunction,
+            messageType: messageType
+        })
+    },
+    confirm: function ({
+        title: title,
+        messageText: messageText,
+        width: width,
+        height: height,
+        top: top,
+        left: left,
+        confirmButton1Text: confirmButton1Text,
+        confirmButton2Text: confirmButton2Text,
+        cancelButtonText: cancelButtonText,
+        confirmFunction1: confirmFunction1,
+        confirmFunction2: confirmFunction2,
+        cancelFunction: cancelFunction,
+        messageType: messageType }) {
+
+        this.basePopup({
+            title: title,
+            messageText: messageText,
+            width: width,
+            height: height,
+            top: top,
+            left: left,
+            applyButton1Text: confirmButton1Text,
+            applyButton2Text: confirmButton2Text,
+            cancelButtonText: cancelButtonText,
+            applyFunction1: confirmFunction1,
+            applyFunction2: confirmFunction2,
+            cancelFunction: cancelFunction,
+            messageType: messageType
+        })
+    },
+}

@@ -1,0 +1,35 @@
+@page {
+    size: A4 portrait;
+    margin-top: 1.0cm;
+    margin-bottom: 1.0cm;
+    margin-left: 0.6cm;
+    margin-right: 0.6cm;
+}
+
+body {
+    margin: 0 !important;
+}
+
+body, div {
+    color: #000;
+    background: none !important;
+}
+
+
+th {
+    text-align: left;
+    word-wrap: normal;
+}
+
+div, span,td {
+    font-size: 8pt;
+}
+
+.sinav-preview-form .basvuru-foto img{
+    height: 140px !important;
+}
+
+.sinav-form .sinav-preview-form .preview-divheader {
+    line-height: 14pt;
+    font-size: 10pt;
+}
