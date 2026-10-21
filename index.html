@@ -29,6 +29,7 @@
       padding: 0;
       color: #222;
       width: 100%;
+      overflow-x: hidden;
     }
 
     .container {
@@ -37,11 +38,13 @@
       max-width: 1350px;
       margin: 0 auto;
       font-size: 93%;
+      box-sizing: border-box;
     }
 
     /* HEADER */
     .header {
       width: 100%;
+      min-height: 60px;
       height: 60px;
       margin-bottom: 3px;
       position: relative;
@@ -49,25 +52,49 @@
       background: -webkit-linear-gradient(to bottom, #434343, #000);
       background: linear-gradient(to bottom, #434343, #000);
       border-bottom: 2px solid #222;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+      box-sizing: border-box;
+    }
+
+    /* Reset legacy background icons from base.min.css */
+    .menu-icon-nav .menu-anasayfa,
+    .menu-icon-nav .menu-sinavtakvimi,
+    .menu-icon-nav .menu-yuedinme {
+      background: none !important;
+      padding-left: 0 !important;
+      margin-left: 0 !important;
+      height: auto !important;
+      line-height: normal !important;
     }
 
     ul.menu-icon-nav {
-      position: absolute;
-      left: 12px;
-      top: 17px;
-      display: flex;
+      position: static !important;
+      top: auto !important;
+      left: auto !important;
+      display: flex !important;
+      align-items: center;
       list-style: none;
-      gap: 18px;
+      gap: 16px;
       margin: 0;
       padding: 0;
+      float: none !important;
+      z-index: 2;
+    }
+
+    ul.menu-icon-nav li {
+      float: none !important;
+      margin: 0 !important;
     }
 
     ul.menu-icon-nav li a {
-      color: #ffffff;
-      text-decoration: none;
+      color: #ffffff !important;
+      text-decoration: none !important;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 7px;
       font-size: 12.5px;
       font-weight: 600;
       transition: color 0.15s ease;
@@ -75,40 +102,59 @@
     }
 
     ul.menu-icon-nav li a:hover {
-      color: #f5a623;
-      text-decoration: none;
+      color: #f5a623 !important;
+      text-decoration: none !important;
     }
 
     .appLogo {
-      position: absolute;
-      left: 50%;
-      margin-left: -230px;
-      top: 14px;
-      width: 460px;
+      position: absolute !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      margin-left: 0 !important;
+      top: 50% !important;
+      margin-top: -16px !important;
+      width: auto !important;
+      max-width: 440px;
       height: 32px;
-      display: flex;
+      display: flex !important;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+      z-index: 1;
+      background: none !important;
+      background-image: none !important;
+    }
+
+    .appLogo img {
+      max-height: 29px;
+      width: auto;
+      max-width: 100%;
+      border: none;
+      background: transparent;
+      padding: 0;
     }
 
     .login-view {
-      float: right;
-      line-height: 60px;
-      display: flex;
+      position: static !important;
+      float: none !important;
+      line-height: normal !important;
+      display: flex !important;
       align-items: center;
       gap: 12px;
-      padding-right: 15px;
+      padding-right: 0 !important;
+      z-index: 2;
     }
 
     .login-view img {
       vertical-align: middle;
       cursor: pointer;
       transition: transform 0.1s ease;
+      margin: 0 !important;
     }
 
     .login-view img:hover {
       transform: translateY(-2px);
+      margin-top: 0 !important;
     }
 
     /* MAIN LAYOUT */
@@ -124,10 +170,20 @@
       text-align: left;
       padding: 18px 14px;
       background-color: #181716 !important;
+      background-image: none !important;
       border: 1px solid #333;
       border-radius: 4px;
       flex-shrink: 0;
       box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      box-sizing: border-box;
+    }
+
+    .mobile-menu-header-bar {
+      display: block;
+    }
+
+    .btn-mobile-menu-toggle {
+      display: none !important;
     }
 
     .menu .uye-bilgi {
@@ -264,6 +320,11 @@
       flex: 1;
       margin-left: 15px;
       padding: 0;
+      box-sizing: border-box;
+      background-image: none !important;
+      background-color: transparent !important;
+      min-height: auto !important;
+      border: none !important;
     }
 
     .inner-cream-card {
@@ -273,6 +334,7 @@
       padding: 24px 28px;
       box-shadow: 0 4px 18px rgba(0,0,0,0.08);
       min-height: 480px;
+      box-sizing: border-box;
     }
 
     .panel-heading-title {
@@ -286,6 +348,13 @@
     }
 
     /* RESULTS TABLE */
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 12px;
+    }
+
     .results-table {
       width: 100%;
       border-collapse: collapse;
@@ -339,6 +408,7 @@
       border-top: 2px solid #222;
       padding: 0 15px;
       text-align: right;
+      box-sizing: border-box;
     }
 
     .footer img {
@@ -420,6 +490,7 @@
       align-items: center;
       justify-content: center;
       padding: 30px 15px;
+      box-sizing: border-box;
     }
 
     #loginPageWrapper.hidden {
@@ -485,7 +556,7 @@
       padding: 9px 12px;
       border: 1px solid #c5c5c5;
       border-radius: 4px;
-      font-size: 13.5px;
+      font-size: 14px;
       box-sizing: border-box;
       outline: none;
       transition: border 0.15s ease;
@@ -519,6 +590,328 @@
     .hidden {
       display: none !important;
     }
+
+    /* ===================================================================
+       RESPONSIVE DESIGN (TABLETS & MOBILE SMARTPHONES)
+       =================================================================== */
+    @media (max-width: 991px) {
+      .container {
+        min-width: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 10px !important;
+      }
+    }
+
+    @media (max-width: 860px) {
+      /* Header on mobile / tablet */
+      .header {
+        height: auto !important;
+        min-height: 54px !important;
+        padding: 6px 12px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        position: relative !important;
+      }
+
+      ul.menu-icon-nav {
+        order: 1 !important;
+        gap: 10px !important;
+      }
+
+      ul.menu-icon-nav li a .nav-text {
+        display: none !important;
+      }
+
+      ul.menu-icon-nav li a img {
+        width: 22px !important;
+        height: 22px !important;
+      }
+
+      .appLogo {
+        position: static !important;
+        transform: none !important;
+        order: 2 !important;
+        margin: 0 auto !important;
+        max-width: 180px !important;
+        height: 30px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: none !important;
+        background-image: none !important;
+      }
+
+      .appLogo img {
+        max-height: 25px !important;
+        max-width: 100% !important;
+      }
+
+      .login-view {
+        order: 3 !important;
+        gap: 6px !important;
+      }
+
+      #btnTopHelp {
+        display: none !important;
+      }
+
+      .login-view a img {
+        height: 23px !important;
+        width: auto !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      /* Stack layout on mobile */
+      .main-content-con {
+        flex-direction: column !important;
+        margin-bottom: 16px !important;
+        min-height: auto !important;
+      }
+
+      .menu {
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-bottom: 12px !important;
+        padding: 12px 14px !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.18) !important;
+      }
+
+      .mobile-menu-header-bar {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        border-bottom: 1px solid #3c3c3c !important;
+        padding-bottom: 6px !important;
+        margin-bottom: 6px !important;
+      }
+
+      .menu .uye-bilgi {
+        border-bottom: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 13.5px !important;
+      }
+
+      .btn-mobile-menu-toggle {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        background: #252422 !important;
+        color: #f5a623 !important;
+        border: 1px solid #fbc10a !important;
+        border-radius: 4px !important;
+        padding: 4px 10px !important;
+        font-size: 11.5px !important;
+        font-weight: bold !important;
+        cursor: pointer !important;
+      }
+
+      .sidebar-collapsible-content.mobile-collapsed {
+        display: none !important;
+      }
+
+      .menu ul.nav li ul.dropdown-sub {
+        position: static !important;
+        width: 100% !important;
+        box-shadow: none !important;
+        margin-top: 4px !important;
+      }
+
+      .main-content {
+        width: 100% !important;
+        margin-left: 0 !important;
+      }
+
+      .inner-cream-card {
+        padding: 16px 12px !important;
+        border-radius: 8px !important;
+        min-height: auto !important;
+      }
+
+      .panel-heading-title {
+        font-size: 17px !important;
+        margin-bottom: 14px !important;
+      }
+
+      /* Results Table on mobile */
+      .results-table {
+        font-size: 12px !important;
+      }
+
+      .results-table th,
+      .results-table td {
+        padding: 9px 6px !important;
+      }
+
+      .results-table .th-right,
+      .results-table td:nth-child(2),
+      .results-table td:nth-child(3) {
+        white-space: nowrap !important;
+      }
+
+      .btn-view-result {
+        display: inline-block !important;
+        background: #0066cc !important;
+        color: #ffffff !important;
+        padding: 6px 12px !important;
+        border-radius: 4px !important;
+        font-size: 11.5px !important;
+        font-weight: bold !important;
+        text-decoration: none !important;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.15) !important;
+      }
+
+      .btn-view-result:hover {
+        background: #004499 !important;
+      }
+
+      /* Modal on mobile */
+      #resultDocModal {
+        padding: 8px !important;
+      }
+
+      .result-sheet {
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: 96vh !important;
+        padding: 16px 10px !important;
+        border-radius: 6px !important;
+      }
+
+      .modal-candidate-box {
+        width: 100% !important;
+        flex-direction: row !important;
+      }
+
+      .modal-candidate-photo-cell {
+        width: 85px !important;
+        padding: 4px !important;
+        flex-shrink: 0;
+      }
+
+      .modal-candidate-photo-cell img {
+        width: 76px !important;
+        height: 98px !important;
+      }
+
+      .modal-candidate-details-table {
+        font-size: 11px !important;
+      }
+
+      .modal-candidate-details-table td {
+        padding: 4px 6px !important;
+      }
+
+      .modal-candidate-details-table .lbl-tc {
+        width: 105px !important;
+      }
+
+      #modalExamTitle {
+        font-size: 13.5px !important;
+      }
+
+      #modalLegalText {
+        font-size: 10px !important;
+      }
+
+      /* Login card on mobile */
+      #loginPageWrapper {
+        padding: 16px 8px !important;
+        min-height: calc(100vh - 110px) !important;
+      }
+
+      .login-box-card {
+        padding: 22px 16px !important;
+        border-radius: 10px !important;
+        max-width: 100% !important;
+      }
+
+      .input-osym {
+        font-size: 16px !important; /* Critical to prevent iOS auto-zoom */
+        padding: 10px 12px !important;
+      }
+
+      .btn-osym-submit {
+        padding: 13px !important;
+        font-size: 15px !important;
+      }
+
+      #captchaBox {
+        padding: 6px 12px !important;
+        font-size: 15px !important;
+        letter-spacing: 3px !important;
+      }
+
+      /* Footer on mobile */
+      .footer {
+        height: auto !important;
+        line-height: normal !important;
+        padding: 12px 10px !important;
+        text-align: center !important;
+      }
+
+      .footer .container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 6px !important;
+        min-width: 0 !important;
+      }
+
+      .footer img {
+        position: static !important;
+        margin: 0 auto !important;
+      }
+
+      .footer span {
+        font-size: 11px !important;
+        text-align: center !important;
+        display: block !important;
+      }
+
+      /* Kimlik & Fotoğraf views on mobile */
+      .kimlik-split-wrapper {
+        flex-direction: column !important;
+      }
+
+      .kimlik-grid-box {
+        grid-template-columns: 140px 1fr !important;
+        font-size: 12px !important;
+        gap: 8px 8px !important;
+      }
+
+      .kimlik-split-right {
+        align-items: stretch !important;
+        width: 100% !important;
+      }
+
+      #btnUpdateMernis {
+        width: 100% !important;
+      }
+
+      .fotograf-top-box {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+      }
+
+      .fotograf-top-box img {
+        margin: 0 auto !important;
+      }
+
+      .fotograf-top-box div {
+        height: auto !important;
+        align-items: center !important;
+      }
+
+      #btnUseIdCardPhoto {
+        align-self: center !important;
+        width: 100% !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -529,13 +922,13 @@
       <li>
         <a id="navHomeLink" class="menu-anasayfa">
           <img src="Content/Images/icon-anasayfa.png" alt="" width="20" height="20">
-          Ana Sayfa
+          <span class="nav-text">Ana Sayfa</span>
         </a>
       </li>
       <li>
         <a id="navCalendarLink" class="menu-sinavtakvimi">
           <img src="Content/Images/icon-sinavtakvimi.png" alt="" width="20" height="20">
-          ÖSYM İşlem Takvimi
+          <span class="nav-text">ÖSYM İşlem Takvimi</span>
         </a>
       </li>
     </ul>
@@ -619,62 +1012,67 @@
 
       <!-- LEFT SIDEBAR -->
       <div class="menu">
-        <h5 class="uye-bilgi">MİKAİL ORAK</h5>
+        <div class="mobile-menu-header-bar">
+          <h5 class="uye-bilgi">MİKAİL ORAK</h5>
+          <button type="button" id="btnToggleMobileMenu" class="btn-mobile-menu-toggle">Menü ▾</button>
+        </div>
 
-        <h5>İŞLEMLER</h5>
-        <ul class="nav">
-          <li>
-            <a class="menu-box-btn" id="menuBtnBasvuruSureci">
-              <span>Başvuru Sürecindekiler</span>
-              <span style="font-size: 11px;">›</span>
-            </a>
-            <!-- Submenu matching live site -->
-            <ul class="dropdown-sub" style="z-index: 9999;">
-              <li><a class="fake-loading-trigger">2026 - ALES/3</a></li>
-              <li><a class="fake-loading-trigger">2026 - YABANCI DİL HAZIRLIK</a></li>
-              <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK ALÜGS</a></li>
-              <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK DGS</a></li>
-              <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK MSÜ</a></li>
-              <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK Müh. Tamamlama</a></li>
-              <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK ÖSYS</a></li>
-              <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK Polis Akademisi</a></li>
-              <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK YÇS</a></li>
-              <li><a class="fake-loading-trigger">2026 - İcra</a></li>
-              <li><a class="fake-loading-trigger">2026 GUY/2 Ön Başvuru</a></li>
-              <li><a class="fake-loading-trigger">2026 - DGS Ek Tercih</a></li>
-            </ul>
-          </li>
+        <div id="sidebarMenuCollapsible" class="sidebar-collapsible-content">
+          <h5>İŞLEMLER</h5>
+          <ul class="nav">
+            <li>
+              <a class="menu-box-btn" id="menuBtnBasvuruSureci">
+                <span>Başvuru Sürecindekiler</span>
+                <span style="font-size: 11px;">›</span>
+              </a>
+              <!-- Submenu matching live site -->
+              <ul class="dropdown-sub" style="z-index: 9999;">
+                <li><a class="fake-loading-trigger">2026 - ALES/3</a></li>
+                <li><a class="fake-loading-trigger">2026 - YABANCI DİL HAZIRLIK</a></li>
+                <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK ALÜGS</a></li>
+                <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK DGS</a></li>
+                <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK MSÜ</a></li>
+                <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK Müh. Tamamlama</a></li>
+                <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK ÖSYS</a></li>
+                <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK Polis Akademisi</a></li>
+                <li><a class="fake-loading-trigger">2026 - YABANCIDİLHAZIRLIK YÇS</a></li>
+                <li><a class="fake-loading-trigger">2026 - İcra</a></li>
+                <li><a class="fake-loading-trigger">2026 GUY/2 Ön Başvuru</a></li>
+                <li><a class="fake-loading-trigger">2026 - DGS Ek Tercih</a></li>
+              </ul>
+            </li>
 
-          <li>
-            <a class="menu-box-btn fake-loading-trigger" id="menuBtnBasvurularim">
-              <span>Başvurularım / Tercihlerim</span>
-            </a>
-          </li>
+            <li>
+              <a class="menu-box-btn fake-loading-trigger" id="menuBtnBasvurularim">
+                <span>Başvurularım / Tercihlerim</span>
+              </a>
+            </li>
 
-          <li>
-            <a class="menu-box-btn active-menu" id="menuBtnSonuclarim">
-              <span>Sonuçlarım</span>
-            </a>
-          </li>
+            <li>
+              <a class="menu-box-btn active-menu" id="menuBtnSonuclarim">
+                <span>Sonuçlarım</span>
+              </a>
+            </li>
 
-          <li>
-            <a class="menu-box-btn fake-loading-trigger" id="menuBtnEvrakNo">
-              <span>Evrak Referans Numarası</span>
-            </a>
-          </li>
-        </ul>
+            <li>
+              <a class="menu-box-btn fake-loading-trigger" id="menuBtnEvrakNo">
+                <span>Evrak Referans Numarası</span>
+              </a>
+            </li>
+          </ul>
 
-        <h5>PROFİLİM</h5>
-        <ul class="profile-nav">
-          <li><a class="uye-islem" id="menuBtnKimlik">▪ Kimlik Bilgilerim</a></li>
-          <li><a class="uye-islem" id="menuBtnFotograf">▪ Fotoğraf Bilgilerim</a></li>
-          <li><a class="uye-islem fake-loading-trigger">▪ Adres - İletişim Bilgilerim</a></li>
-          <li><a class="uye-islem fake-loading-trigger">▪ Doğrulanmış İletişim Bilgilerim</a></li>
-          <li><a class="uye-islem fake-loading-trigger">▪ Eğitim Bilgilerim</a></li>
-          <li><a class="uye-islem fake-loading-trigger">▪ Şehit / Gazi Yakınlık Bilgilerim</a></li>
-          <li><a class="uye-islem fake-loading-trigger">▪ E-Rapor Bilgilerim</a></li>
-          <li><a class="uye-islem fake-loading-trigger">▪ Şifremi Değiştir</a></li>
-        </ul>
+          <h5>PROFİLİM</h5>
+          <ul class="profile-nav">
+            <li><a class="uye-islem" id="menuBtnKimlik">▪ Kimlik Bilgilerim</a></li>
+            <li><a class="uye-islem" id="menuBtnFotograf">▪ Fotoğraf Bilgilerim</a></li>
+            <li><a class="uye-islem fake-loading-trigger">▪ Adres - İletişim Bilgilerim</a></li>
+            <li><a class="uye-islem fake-loading-trigger">▪ Doğrulanmış İletişim Bilgilerim</a></li>
+            <li><a class="uye-islem fake-loading-trigger">▪ Eğitim Bilgilerim</a></li>
+            <li><a class="uye-islem fake-loading-trigger">▪ Şehit / Gazi Yakınlık Bilgilerim</a></li>
+            <li><a class="uye-islem fake-loading-trigger">▪ E-Rapor Bilgilerim</a></li>
+            <li><a class="uye-islem fake-loading-trigger">▪ Şifremi Değiştir</a></li>
+          </ul>
+        </div>
       </div>
 
       <!-- RIGHT MAIN CONTENT -->
@@ -684,25 +1082,27 @@
         <div id="view-sonuclarim" class="inner-cream-card">
           <h3 class="panel-heading-title">Sonuçlarım</h3>
 
-          <table class="results-table">
-            <thead>
-              <tr>
-                <th style="min-width: 320px;">Sonuç Adı</th>
-                <th class="th-right" style="width: 140px;">Açıklama Tarihi</th>
-                <th class="th-right" style="width: 110px;">İşlem</th>
-              </tr>
-            </thead>
-            <tbody id="resultsTableBody">
-              <!-- Dynamically populated from EXAM_RESULTS_DATA -->
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colspan="3" style="text-align: right; padding-top: 22px; font-weight: bold; font-size: 13px; color: #111; border: none;">
-                  Toplam Sonuç Sayısı: <span id="totalResultsCount">9</span>
-                </td>
-              </tr>
-            </tfoot>
-          </table>
+          <div class="table-responsive">
+            <table class="results-table">
+              <thead>
+                <tr>
+                  <th style="min-width: 280px;">Sonuç Adı</th>
+                  <th class="th-right" style="width: 140px;">Açıklama Tarihi</th>
+                  <th class="th-right" style="width: 110px;">İşlem</th>
+                </tr>
+              </thead>
+              <tbody id="resultsTableBody">
+                <!-- Dynamically populated from EXAM_RESULTS_DATA -->
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="3" style="text-align: right; padding-top: 18px; font-weight: bold; font-size: 13px; color: #111; border: none;">
+                    Toplam Sonuç Sayısı: <span id="totalResultsCount">9</span>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
         </div>
 
         <!-- ================= VIEW 2: KİMLİK BİLGİLERİM ================= -->
@@ -721,8 +1121,8 @@
           <div style="background-color: #f7eedf; border: 1px solid #edd5b3; border-radius: 6px; padding: 22px 26px; margin-bottom: 22px;">
             <h4 style="font-size: 15px; font-weight: bold; color: #222; margin-top: 0; margin-bottom: 18px; border-bottom: 1px solid #e2cbab; padding-bottom: 6px;">Kimlik Bilgileri</h4>
             
-            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
-              <div style="display: grid; grid-template-columns: 180px 1fr; gap: 10px 14px; font-size: 13px; color: #222;">
+            <div class="kimlik-split-wrapper" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+              <div class="kimlik-grid-box" style="display: grid; grid-template-columns: 180px 1fr; gap: 10px 14px; font-size: 13px; color: #222;">
                 <span style="color: #444;">T.C. Kimlik / YU No :</span><span style="font-weight: 600;">21425132954</span>
                 <span style="color: #444;">Adı :</span><span style="font-weight: 600;">MİKAİL</span>
                 <span style="color: #444;">Soyadı :</span><span style="font-weight: 600;">ORAK</span>
@@ -734,7 +1134,7 @@
                 <span style="color: #444;">Uyruk :</span><span style="font-weight: 600;">T.C.</span>
               </div>
 
-              <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 14px;">
+              <div class="kimlik-split-right" style="display: flex; flex-direction: column; align-items: flex-end; gap: 14px;">
                 <div style="display: flex; align-items: center; gap: 8px;">
                   <label style="font-size: 12.5px; font-weight: 600; color: #333;">Doğum Tarihi:*</label>
                   <div style="display: flex; align-items: center; border: 1px solid #bbb; border-radius: 4px; background: #fff; padding: 4px 8px;">
@@ -763,7 +1163,7 @@
         <div id="view-fotograf" class="inner-cream-card hidden">
           <h3 class="panel-heading-title">FOTOĞRAF BİLGİLERİM</h3>
 
-          <div style="display: flex; gap: 26px; align-items: flex-start; margin-bottom: 26px;">
+          <div class="fotograf-top-box" style="display: flex; gap: 26px; align-items: flex-start; margin-bottom: 26px;">
             <img src="candidate_photo.jpg" alt="Aday Fotoğrafı" style="width: 140px; height: 175px; object-fit: cover; border: 2px solid silver; border-radius: 3px; background-color: #fff; padding: 3px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
             <div style="display: flex; flex-direction: column; justify-content: center; height: 175px;">
               <p style="font-size: 15px; font-weight: bold; color: #111; margin: 0 0 8px 0;">Fotoğrafınız Onaylanmıştır.</p>
@@ -819,61 +1219,63 @@
             </select>
           </div>
 
-          <table class="results-table" style="font-size: 12px;">
-            <thead>
-              <tr style="background: #f0e6d5;">
-                <th style="padding: 8px;">SINAV / TERCİH ADI</th>
-                <th style="padding: 8px;">İŞLEM TİPİ</th>
-                <th style="padding: 8px;">SINAVIN TARİHİ</th>
-                <th style="padding: 8px;">İŞLEM TARİHLERİ</th>
-                <th style="padding: 8px;">DURUMU</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>2026 - ALES/3</strong> <img src="ÖSYM Aday İşlemleri Sistemi_files/icon-songun.png" width="55" height="26" alt="Son Gün" style="vertical-align: middle; margin-left: 6px;"></td>
-                <td>Başvuru</td>
-                <td>29.11.2026</td>
-                <td>21.10.2026 10.00 - 21.10.2026 23.59</td>
-                <td style="color: #2e7d32; font-weight: bold;">Devam Ediyor</td>
-              </tr>
-              <tr>
-                <td><strong>2026 - İYÖS</strong> <img src="ÖSYM Aday İşlemleri Sistemi_files/icon-yeni.png" width="55" height="26" alt="Yeni" style="vertical-align: middle; margin-left: 6px;"></td>
-                <td>Cevap Kağıdı Görüntüleme</td>
-                <td>27.09.2026</td>
-                <td>21.10.2026 11.15</td>
-                <td style="color: #2e7d32; font-weight: bold;">Görüntüleme Başladı</td>
-              </tr>
-              <tr>
-                <td><strong>2026 - HMGS/2</strong> <img src="ÖSYM Aday İşlemleri Sistemi_files/icon-yeni.png" width="55" height="26" alt="Yeni" style="vertical-align: middle; margin-left: 6px;"></td>
-                <td>Cevap Kağıdı Görüntüleme</td>
-                <td>27.09.2026</td>
-                <td>21.10.2026 11.15</td>
-                <td style="color: #2e7d32; font-weight: bold;">Görüntüleme Başladı</td>
-              </tr>
-              <tr>
-                <td><strong>2026 - İcra</strong> <img src="ÖSYM Aday İşlemleri Sistemi_files/icon-yeni.png" width="55" height="26" alt="Yeni" style="vertical-align: middle; margin-left: 6px;"></td>
-                <td>Başvuru</td>
-                <td>05.12.2026</td>
-                <td>20.10.2026 10.00 - 26.10.2026 23.59</td>
-                <td style="color: #2e7d32; font-weight: bold;">Devam Ediyor</td>
-              </tr>
-              <tr>
-                <td><strong>2026 GUY/2 Ön Başvuru</strong> <img src="ÖSYM Aday İşlemleri Sistemi_files/icon-yeni.png" width="55" height="26" alt="Yeni" style="vertical-align: middle; margin-left: 6px;"></td>
-                <td>Tercih</td>
-                <td>-</td>
-                <td>20.10.2026 10.30 - 22.10.2026 23.59</td>
-                <td style="color: #2e7d32; font-weight: bold;">Devam Ediyor</td>
-              </tr>
-              <tr>
-                <td><strong>2026 - YABANCI DİL HAZIRLIK</strong> <img src="ÖSYM Aday İşlemleri Sistemi_files/icon-yeni.png" width="55" height="26" alt="Yeni" style="vertical-align: middle; margin-left: 6px;"></td>
-                <td>Başvuru</td>
-                <td>-</td>
-                <td>19.10.2026 15.30 - 02.11.2026 23.59</td>
-                <td style="color: #2e7d32; font-weight: bold;">Devam Ediyor</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-responsive">
+            <table class="results-table" style="font-size: 12px;">
+              <thead>
+                <tr style="background: #f0e6d5;">
+                  <th style="padding: 8px;">SINAV / TERCİH ADI</th>
+                  <th style="padding: 8px;">İŞLEM TİPİ</th>
+                  <th style="padding: 8px;">SINAVIN TARİHİ</th>
+                  <th style="padding: 8px;">İŞLEM TARİHLERİ</th>
+                  <th style="padding: 8px;">DURUMU</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>2026 - ALES/3</strong> <img src="ÖSYM Aday İşlemleri Sistemi_files/icon-songun.png" width="55" height="26" alt="Son Gün" style="vertical-align: middle; margin-left: 6px;"></td>
+                  <td>Başvuru</td>
+                  <td>29.11.2026</td>
+                  <td>21.10.2026 10.00 - 21.10.2026 23.59</td>
+                  <td style="color: #2e7d32; font-weight: bold;">Devam Ediyor</td>
+                </tr>
+                <tr>
+                  <td><strong>2026 - İYÖS</strong> <img src="ÖSYM Aday İşlemleri Sistemi_files/icon-yeni.png" width="55" height="26" alt="Yeni" style="vertical-align: middle; margin-left: 6px;"></td>
+                  <td>Cevap Kağıdı Görüntüleme</td>
+                  <td>27.09.2026</td>
+                  <td>21.10.2026 11.15</td>
+                  <td style="color: #2e7d32; font-weight: bold;">Görüntüleme Başladı</td>
+                </tr>
+                <tr>
+                  <td><strong>2026 - HMGS/2</strong> <img src="ÖSYM Aday İşlemleri Sistemi_files/icon-yeni.png" width="55" height="26" alt="Yeni" style="vertical-align: middle; margin-left: 6px;"></td>
+                  <td>Cevap Kağıdı Görüntüleme</td>
+                  <td>27.09.2026</td>
+                  <td>21.10.2026 11.15</td>
+                  <td style="color: #2e7d32; font-weight: bold;">Görüntüleme Başladı</td>
+                </tr>
+                <tr>
+                  <td><strong>2026 - İcra</strong> <img src="ÖSYM Aday İşlemleri Sistemi_files/icon-yeni.png" width="55" height="26" alt="Yeni" style="vertical-align: middle; margin-left: 6px;"></td>
+                  <td>Başvuru</td>
+                  <td>05.12.2026</td>
+                  <td>20.10.2026 10.00 - 26.10.2026 23.59</td>
+                  <td style="color: #2e7d32; font-weight: bold;">Devam Ediyor</td>
+                </tr>
+                <tr>
+                  <td><strong>2026 GUY/2 Ön Başvuru</strong> <img src="ÖSYM Aday İşlemleri Sistemi_files/icon-yeni.png" width="55" height="26" alt="Yeni" style="vertical-align: middle; margin-left: 6px;"></td>
+                  <td>Tercih</td>
+                  <td>-</td>
+                  <td>20.10.2026 10.30 - 22.10.2026 23.59</td>
+                  <td style="color: #2e7d32; font-weight: bold;">Devam Ediyor</td>
+                </tr>
+                <tr>
+                  <td><strong>2026 - YABANCI DİL HAZIRLIK</strong> <img src="ÖSYM Aday İşlemleri Sistemi_files/icon-yeni.png" width="55" height="26" alt="Yeni" style="vertical-align: middle; margin-left: 6px;"></td>
+                  <td>Başvuru</td>
+                  <td>-</td>
+                  <td>19.10.2026 15.30 - 02.11.2026 23.59</td>
+                  <td style="color: #2e7d32; font-weight: bold;">Devam Ediyor</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
       </div>
@@ -923,13 +1325,13 @@
 
       <!-- Candidate Box -->
       <div style="display: flex; justify-content: center; margin-bottom: 20px;">
-        <div style="display: flex; border: 1px solid #000; width: 450px;">
-          <div style="width: 120px; border-right: 1px solid #000; padding: 8px; display: flex; align-items: center; justify-content: center; background: #fff;">
+        <div class="modal-candidate-box" style="display: flex; border: 1px solid #000; width: 450px; max-width: 100%;">
+          <div class="modal-candidate-photo-cell" style="width: 120px; border-right: 1px solid #000; padding: 8px; display: flex; align-items: center; justify-content: center; background: #fff;">
             <img src="candidate_photo.jpg" alt="Aday Fotoğrafı" style="width: 100px; height: 125px; object-fit: cover; border: none; padding: 0;">
           </div>
-          <table style="flex: 1; border-collapse: collapse; font-size: 12px; color: #000;">
+          <table class="modal-candidate-details-table" style="flex: 1; border-collapse: collapse; font-size: 12px; color: #000;">
             <tr style="border-bottom: 1px solid #000;">
-              <td style="padding: 6px 10px; font-weight: bold; width: 145px; border-right: 1px solid #000; background: #fafafa;">T.C. Kimlik Numarası</td>
+              <td class="lbl-tc" style="padding: 6px 10px; font-weight: bold; width: 145px; border-right: 1px solid #000; background: #fafafa;">T.C. Kimlik Numarası</td>
               <td style="padding: 6px 10px;">21425132954</td>
             </tr>
             <tr style="border-bottom: 1px solid #000;">
@@ -949,7 +1351,7 @@
       </div>
 
       <!-- Correct / Wrong Table -->
-      <table style="width: 100%; border-collapse: collapse; border: 1px solid #000; margin-bottom: 18px; font-size: 12px; text-align: center;">
+      <table class="modal-scores-table" style="width: 100%; border-collapse: collapse; border: 1px solid #000; margin-bottom: 18px; font-size: 12px; text-align: center;">
         <thead>
           <tr style="border-bottom: 1px solid #000; background: #fafafa;">
             <th colspan="2" style="padding: 6px; font-weight: bold; border: none;">TESTTEKİ DOĞRU VE YANLIŞ SAYILARI</th>
@@ -968,7 +1370,7 @@
       </table>
 
       <!-- Score & Status Table -->
-      <table style="width: 100%; border-collapse: collapse; border: 1px solid #000; margin-bottom: 22px; font-size: 12px; text-align: center;">
+      <table class="modal-scores-table" style="width: 100%; border-collapse: collapse; border: 1px solid #000; margin-bottom: 22px; font-size: 12px; text-align: center;">
         <thead>
           <tr style="border-bottom: 1px solid #000; background: #fafafa;">
             <th colspan="2" style="padding: 6px; font-weight: bold; border: none;">SINAV PUANI VE BAŞARI DURUMU</th>
@@ -1137,12 +1539,49 @@
     });
 
     function initPortal() {
+      // ALWAYS ensure login page is visible on initial load
+      const loginWrapper = document.getElementById("loginPageWrapper");
+      const portalContainer = document.getElementById("portalContainer");
+      if (loginWrapper) loginWrapper.classList.remove("hidden");
+      if (portalContainer) portalContainer.classList.add("hidden");
+
       renderResultsTable();
       setupNavigation();
       setupAuth();
       setupLoadingTriggers();
       setupModal();
       setupActionButtons();
+      setupMobileMenu();
+    }
+
+    // Mobile menu toggle
+    function setupMobileMenu() {
+      const toggleBtn = document.getElementById("btnToggleMobileMenu");
+      const menuBody = document.getElementById("sidebarMenuCollapsible");
+
+      if (toggleBtn && menuBody) {
+        // Default to collapsed on small screens so candidate directly sees the results
+        if (window.innerWidth <= 768) {
+          menuBody.classList.add("mobile-collapsed");
+          toggleBtn.textContent = "Menü ▾";
+        }
+
+        toggleBtn.addEventListener("click", function () {
+          menuBody.classList.toggle("mobile-collapsed");
+          const isCollapsed = menuBody.classList.contains("mobile-collapsed");
+          toggleBtn.textContent = isCollapsed ? "Menü ▾" : "Menü ▴";
+        });
+      }
+
+      // Close menu when a navigation item is tapped on mobile
+      document.querySelectorAll(".menu-box-btn, .uye-islem").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          if (window.innerWidth <= 768 && menuBody) {
+            menuBody.classList.add("mobile-collapsed");
+            if (toggleBtn) toggleBtn.textContent = "Menü ▾";
+          }
+        });
+      });
     }
 
     // 1. Render Results
@@ -1294,29 +1733,33 @@
         });
       }
 
+      function doLogin(e) {
+        if (e) e.preventDefault();
+        if (loginWrapper) loginWrapper.classList.add("hidden");
+        if (portalContainer) portalContainer.classList.remove("hidden");
+        
+        // Switch to Sonuçlarım
+        const menuSonuclarim = document.getElementById("menuBtnSonuclarim");
+        if (menuSonuclarim) menuSonuclarim.click();
+
+        // On mobile, collapse menu so results are immediately in view
+        const mobileMenuBody = document.getElementById("sidebarMenuCollapsible");
+        const toggleBtn = document.getElementById("btnToggleMobileMenu");
+        if (mobileMenuBody && window.innerWidth <= 768) {
+          mobileMenuBody.classList.add("mobile-collapsed");
+          if (toggleBtn) toggleBtn.textContent = "Menü ▾";
+        }
+
+        window.scrollTo(0, 0);
+      }
+
       // Login form handler: Ne yazılırsa yazılsın doğrudan ana ekrana aktarır!
       if (loginForm) {
-        loginForm.addEventListener("submit", function (e) {
-          e.preventDefault();
-          if (loginWrapper) loginWrapper.classList.add("hidden");
-          if (portalContainer) portalContainer.classList.remove("hidden");
-          
-          // Switch to Sonuçlarım
-          const menuSonuclarim = document.getElementById("menuBtnSonuclarim");
-          if (menuSonuclarim) menuSonuclarim.click();
-          window.scrollTo(0, 0);
-        });
+        loginForm.addEventListener("submit", doLogin);
       }
 
       if (btnEDevletFastLogin) {
-        btnEDevletFastLogin.addEventListener("click", function (e) {
-          e.preventDefault();
-          if (loginWrapper) loginWrapper.classList.add("hidden");
-          if (portalContainer) portalContainer.classList.remove("hidden");
-          const menuSonuclarim = document.getElementById("menuBtnSonuclarim");
-          if (menuSonuclarim) menuSonuclarim.click();
-          window.scrollTo(0, 0);
-        });
+        btnEDevletFastLogin.addEventListener("click", doLogin);
       }
     }
 
